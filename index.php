@@ -12,4 +12,5 @@
 <body class="">
 
 </body>
+    <?php include 'navbar.php'; ?>
 </html>
