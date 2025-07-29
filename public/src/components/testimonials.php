@@ -2,7 +2,7 @@
 <div class="vh-100">
     <section class="pt-5">
     <div class="mt-5 position-relative">
-        <div class="bg-primary h-auto text-md-start text-center p-5">
+        <div class="bg-primary h-auto text-lg-start  testimonial-header p-5">
             <h4 class="text-light">What our Client Says</h4>
             <h4 class="text-warning display-4 fw-bold">TESTIMONIALS</h4>
         <div>

@@ -12136,6 +12136,14 @@ textarea.form-control-lg {
   .mobile {
     display: block;
   }
+  .testimonial-img {
+    width: 230px;
+    top: -120px;
+    right: 35%;
+  }
+  .testimonial-header {
+    text-align: center;
+  }
 }
 @media (max-width: 768px) {
   .service-img {
@@ -12144,7 +12152,6 @@ textarea.form-control-lg {
     left: 35%;
   }
   .testimonial-img {
-    width: 230px;
     top: -120px;
     right: 35%;
   }
