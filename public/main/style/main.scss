@@ -8,6 +8,33 @@
 .desktop {
   display: block;
 }
+//TESTIMONIALS  
+.owl-carousel .owl-item {
+  opacity: 0.2;
+  transition: opacity 0.1s ease, transform 0.5s ease-in-out;
+  transform: scale(.9);
+  box-shadow: 0 4px 10px #000066;
+}
+.owl-stage {
+  padding-top: 8%;
+}
+.owl-carousel .owl-item.center {
+  opacity: 1;
+  transform: scale(1);
+  border: 20px solid #000066;
+  box-shadow: none;
+}
+.img-area {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: -60px;
+  left: 38%;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  overflow: visible;
+}
 
 //nav bar
 .navbar {
@@ -100,12 +127,91 @@
     transform: rotate(45deg) translate(-5px, -6px);
   }
 }
-@media (max-width: 864px){
 
+//services
+.service-body {
+  opacity: 0;
+  transform: scale(0.95);
+  transform-origin: top left;
+  max-height: 0;
+  overflow: hidden;
+  transition: 
+  opacity 0.3s ease, 
+  transform 0.3s ease, 
+  max-height 0.3s ease;
+} 
+.service-head {
+  text-align: center;
+  transition: text-align 1s ease-in-out, transform 1s ease-in-out;
+}
+.service-card:hover .service-head {
+  text-align: left;
+}
+.service-card:hover .service-body {
+  opacity: 1;
+  transform: scale(1);
+  max-height: 300px;
+}
+.service-img {
+  position: absolute;
+  top: -120px;
+  left: 5%;
+  max-width: 500px;
+}
+.testimonial-img {
+  position: absolute;
+  top: -120px;
+  right: 5%;
+  max-width: 500px;
+}
+@media (max-width: 864px){
   .desktop {
     display: none;
   }
   .mobile {
     display: block;
   }
+
+}
+@media (max-width: 768px){
+ .service-img {
+  width: 230px;
+  top: -120px;
+  left: 35%;
+ }
+  .testimonial-img {
+  width: 230px;
+  top: -120px;
+  right: 35%;
+  }
+}
+@media (max-width: 630px){
+ .service-img {
+  top: -120px;
+  left: 33%;
+ }
+  .testimonial-img {
+  top: -120px;
+  right: 33%;
+ }
+}
+@media (max-width: 576px){
+  .service-img {
+    top: -120px;
+    left: 25%;
+  }
+  .testimonial-img {
+    top: -120px;
+    right: 25%;
+  }
+}
+ @media (max-width: 320px){
+ .service-img {
+  top: -120px;
+  left: 18%;
+ }
+  .testimonial-img {
+  top: -120px;
+  right: 18%;
+ }
 }
