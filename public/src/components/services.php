@@ -1,4 +1,4 @@
-<section class="">
+<section class="pt-5">
     <div class="mt-5 position-relative">
         <img src="../main/images/services_section/services-image.png" alt="" class="service-img img-fluid">
         <div class="bg-primary h-auto text-md-end text-center p-5 service">
@@ -7,12 +7,12 @@
         <div>
     </div>
 </section>
-    <div id="services-container" class="container mt-5 pt-3"></div>
+<div id="services-container" class="container mt-5 pt-3 pb-5"></div>
 <script>
 const servicesContainerDiv = document.getElementById('services-container');
 servicesContainerDiv.innerHTML = `
     ${services.map(service => `
-        <div class="service-card border border-primary p-5 mb-3 rounded-5">
+        <div class="service-card border border-primary p-5 mb-3 rounded-5 text-primary">
             <h4 class="fw-bold service-head my-auto">${service.head}</h4>
             <p class="service-body mt-2">${service.body}</p> 
         </div>

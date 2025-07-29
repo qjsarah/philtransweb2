@@ -4,16 +4,21 @@
   <meta charset="UTF-8">
   <title>Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../main/style/main.css">
+  <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css">
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
   <script src="../main/scripts/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <script src="../main/scripts/data.js"></script>
+  <link rel="stylesheet" href="../main/style/main.css">
 </head>
 <body class="">
     <?php include 'components/navbar.php'; ?>
     <section id="services">
       <?php include 'components/services.php'; ?>
     </section>
-
+    <section id="testimonials">
+      <?php include 'components/testimonials.php'; ?>
+    </section>
 </body>
 </html>
