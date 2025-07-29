@@ -8,7 +8,7 @@
 
         <li class="nav-item px-3 w-100 d-flex justify-content-center align-items-center">
             <a class="navbar-brand" href="#" id="logoWrapper">
-                <img src="imgs/logo.png" class="logo mx-auto d-block" alt="logo">
+                <img src="../../public/main/images/nav_section/logo.png" class="logo mx-auto d-block" alt="logo">
             </a>
         </li>
 
@@ -22,7 +22,7 @@
 <div class="mb-2 mobile">
   <nav class="navbar navbar-expand-lg justify-content-between fw-bold">
     <a class="navbar-brand" href="#">
-      <img src="imgs/logo.png" class="logo mx-auto d-block" alt="logo">
+      <img src="../../public/main/images/nav_section/logo.png" class="logo mx-auto d-block" alt="logo">
     </a>
     <button class="navbar-toggler collapsed custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <div class="bar1 bg-secondary"></div>
