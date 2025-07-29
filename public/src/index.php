@@ -6,11 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../main/style/main.css">
   <script src="../main/scripts/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="../main.css">
-  <script src="../bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script src="../main/scripts/data.js"></script>
 </head>
-    <?php include 'components/navbar.php'; ?>
 <body class="">
+    <?php include 'components/navbar.php'; ?>
+    <section id="services">
+      <?php include 'components/services.php'; ?>
+    </section>
+
 </body>
 </html>
