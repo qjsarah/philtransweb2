@@ -20,7 +20,7 @@
     </nav>
 </div>
 <div class="mb-2 mobile">
-  <nav class="navbar navbar-expand-lg justify-content-between fw-bold">
+  <nav class="navbar navbar-expand-lg justify-content-between fw-bold sticky-top">
     <a class="navbar-brand" href="#">
       <img src="../../public/main/images/nav_section/logo.png" class="logo mx-auto d-block" alt="logo">
     </a>

@@ -13,7 +13,9 @@
   <link rel="stylesheet" href="../main/style/main.css">
 </head>
 <body class="">
+  <div class="sticky-top z-3">
     <?php include 'components/navbar.php'; ?>
+    </div>
     <section id="services">
       <?php include 'components/services.php'; ?>
     </section>
