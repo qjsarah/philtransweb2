@@ -11982,48 +11982,15 @@ textarea.form-control-lg {
   display: block;
 }
 
-.contact {
-  margin-top: 200px;
-  width: 100%;
-  height: auto;
-  background-color: #000066;
-}
-
-.contact_button {
-  transition: 0.3s;
-  background-color: #000066;
-  border-style: solid;
-  border-color: white;
-  border-width: thin;
-}
-
-.contact_button:hover {
-  box-shadow: 5px 5px;
-  transition: 0.3s;
-  border-style: solid;
-}
-
-.contact_info {
-  width: 100px;
-  height: 100px;
-  border: 2px solid white;
-  border-radius: 50%;
-  transition: 0.5s;
-  background-color: transparent;
-}
-
-.contact_info:hover {
-  transition: 0.5s;
-  box-shadow: 5px 5px;
-}
-
 .navbar {
   background-color: transparent;
   border-radius: 50px;
-  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
   max-width: 960px;
   position: relative;
   transition: background-color 0.4s ease;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   /* Animate to X */
 }
 .navbar .nav-item {
@@ -12095,6 +12062,44 @@ textarea.form-control-lg {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
+.service-body {
+  opacity: 0;
+  transform: scale(0.95);
+  transform-origin: top left;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
+}
+
+.service-head {
+  text-align: center;
+  transition: text-align 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.service-card:hover .service-head {
+  text-align: left;
+}
+
+.service-card:hover .service-body {
+  opacity: 1;
+  transform: scale(1);
+  max-height: 300px;
+}
+
+.service-img {
+  position: absolute;
+  top: -120px;
+  left: 5%;
+  max-width: 500px;
+}
+
+.testimonial-img {
+  position: absolute;
+  top: -120px;
+  right: 5%;
+  max-width: 500px;
+}
+
 @media (max-width: 864px) {
   .desktop {
     display: none;
@@ -12102,7 +12107,60 @@ textarea.form-control-lg {
   .mobile {
     display: block;
   }
+  .testimonial-img {
+    width: 230px;
+    top: -120px;
+    right: 35%;
+  }
+  .testimonial-header {
+    text-align: center;
+  }
 }
+@media (max-width: 768px) {
+  .service-img {
+    width: 230px;
+    top: -120px;
+    left: 35%;
+  }
+  .testimonial-img {
+    top: -120px;
+    right: 35%;
+  }
+}
+@media (max-width: 630px) {
+  .service-img {
+    top: -120px;
+    left: 33%;
+  }
+  .testimonial-img {
+    top: -120px;
+    right: 33%;
+  }
+}
+@media (max-width: 576px) {
+  .service-img {
+    top: -120px;
+    left: 25%;
+  }
+  .testimonial-img {
+    top: -120px;
+    right: 25%;
+  }
+}
+@media (max-width: 320px) {
+  .service-img {
+    top: -120px;
+    left: 18%;
+  }
+  .testimonial-img {
+    top: -120px;
+    right: 18%;
+  }
+}
+.contact {
+  background-color: #000066;
+}
+
 .icon-circle {
   background-color: #000066;
   border-radius: 50%;

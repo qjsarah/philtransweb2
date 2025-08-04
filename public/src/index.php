@@ -4,38 +4,65 @@
   <meta charset="UTF-8">
   <title>Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../main/style/main.css">
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../../public/main/style/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- JS Files -->
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
   <script src="../main/scripts/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="../main.css">
-  <script src="../bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script src="../main/scripts/data.js"></script>
 </head>
+<body>
+
+  <!-- Navbar -->
+  <div class="sticky-top z-3">
     <?php include 'components/navbar.php'; ?>
-<body class="">
+  </div>
 
-    <section id="download" class="mb-5 pb-5">
-      <?php include 'components/download.php';?>
-    </section>
+  <!-- Download Section -->
+  <section id="download">
+    <?php include 'components/download.php'; ?>
+  </section>
 
-    <section id="about" class="pt-5">
-      <?php include 'components/about.php';?>
-    </section>
+  <!-- Intro Section -->
+  <section id="intro">
+    <?php include 'components/intro.php'; ?>
+  </section>
 
-    <section id="#" class="pt-5">
-      <?php include 'components/ads/ads_1.php';?>
-    </section>
+  <!-- About Section -->
+  <section id="about">
+    <?php include 'components/about.php'; ?>
+  </section>
 
+  <!-- Mission & Vision Section -->
+  <section id="missionvission">
+    <?php include 'components/mvision.php'; ?>
+  </section>
 
-    <section id="#">
-      <?php include 'components/ads/ads_2.php';?>
-    </section>
+  <!-- Services Section -->
+  <section id="services">
+    <?php include 'components/services.php'; ?>
+  </section>
 
-    <section id="#">
-      <?php include 'components/contact.php';?>
-    </section>
+  <!-- Testimonials Section -->
+  <section id="testimonial">
+    <?php include 'components/testimonials.php'; ?>
+  </section>
 
-       <section id="#">
-      <?php include 'components/footer.php';?>
-    </section>
+  <!-- Contact Section -->
+  <section id="contact">
+    <?php include 'components/contact.php'; ?>
+  </section>
+
+  <!-- Footer Section -->
+  <section id="footer">
+    <?php include 'components/footer.php'; ?>
+  </section>
+
 </body>
 </html>
