@@ -1,6 +1,6 @@
 <section class="pt-5">
     <div class="mt-5 position-relative" data-aos="fade-left" data-aos-duration="1500">
-        <img src="../main/images/services_section/services-image.png" alt="" class="service-img img-fluid"  data-aos="fade-up" data-aos-duration="1000">
+        <img src="../main/images/services_section/services-image.png" alt="" class="service-img img-fluid"  data-aos="fade-left" data-aos-duration="1000">
         <div class="bg-primary h-auto text-md-end text-center p-5 service">
             <h4 class="text-light" data-aos="fade-left" data-aos-duration="1000">How it Works</h4>
             <h4 class="text-warning display-4 fw-bold" data-aos="fade-left" data-aos-duration="1000">SERVICES</h4>
