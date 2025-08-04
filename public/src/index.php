@@ -11,6 +11,7 @@
   <script src="../main/scripts/bootstrap.bundle.min.js"></script>
   <script src="../main/scripts/data.js"></script>
   <link rel="stylesheet" href="../main/style/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="">
   <div class="sticky-top z-3">
@@ -22,5 +23,11 @@
     <section id="testimonials">
       <?php include 'components/testimonials.php'; ?>
     </section>
+
+    
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
