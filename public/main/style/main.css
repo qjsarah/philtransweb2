@@ -11982,12 +11982,40 @@ textarea.form-control-lg {
   display: block;
 }
 
+.owl-carousel .owl-item {
+  opacity: 0.2;
+  transition: opacity 0.1s ease, transform 0.5s ease-in-out;
+  transform: scale(0.9);
+  box-shadow: 0 4px 10px #000066;
+}
+
+.owl-stage {
+  padding-top: 8%;
+}
+
+.owl-carousel .owl-item.center {
+  opacity: 1;
+  transform: scale(1);
+  border: 20px solid #000066;
+  box-shadow: none;
+}
+
+.img-area {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: -60px;
+  left: 38%;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  overflow: visible;
+}
+
 .navbar {
   background-color: transparent;
-  border-radius: 50px;
-  padding: 0.5rem 1rem;
   margin: 1rem auto;
-  max-width: 960px;
+  max-width: 100%;
   position: relative;
   transition: background-color 0.4s ease;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
@@ -12207,4 +12235,4 @@ textarea.form-control-lg {
 }
 footer {
   background-color: #000066;
-}/*# sourceMappingURL=main.css.map */
+}

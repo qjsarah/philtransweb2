@@ -63,6 +63,10 @@
   <section id="footer">
     <?php include 'components/footer.php'; ?>
   </section>
-
+<!-- SCRIPTS DO NOT REMOVE TO HEAD PLEASE -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>

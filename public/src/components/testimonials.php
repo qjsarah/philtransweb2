@@ -1,19 +1,18 @@
-
 <div class="vh-100">
-    <section class="pt-5">
-    <div class="mt-5 position-relative" data-aos="fade-right" data-aos-duration="1500">
-        <div class="bg-primary h-auto text-lg-start  testimonial-header p-5">
-            <h4 class="text-light" data-aos="fade-right" data-aos-duration="1000">What our Client Says</h4>
-            <h4 class="text-warning display-4 fw-bold" data-aos="fade-right" data-aos-duration="1000">TESTIMONIALS</h4>
-        <div>
-        <img src="../../public/main/images/testimonial_section/testimonial_image.png" alt="" class="testimonial-img img-fluid" data-aos="fade-up" data-aos-duration="1000">
-    </div>
-</section>
-<div id="testimonial" class=""></div>
+    <div id="testimonial" class=""></div>
 </div>
 <script>
     const testimonialDiv = document.getElementById('testimonial');
     testimonialDiv.innerHTML = `
+    <section class="pt-5">
+        <div class="mt-5 position-relative" data-aos="fade-right" data-aos-duration="1500">
+            <div class="bg-primary h-auto text-lg-start  testimonial-header p-5">
+                <h4 class="text-light" data-aos="fade-right" data-aos-duration="1000">What our Client Says</h4>
+                <h4 class="text-warning display-4 fw-bold" data-aos="fade-right" data-aos-duration="1000">TESTIMONIALS</h4>
+            <div>
+            <img src="../../public/main/images/testimonial_section/testimonial_image.png" alt="" class="testimonial-img img-fluid" data-aos="fade-up" data-aos-duration="1000">
+        </div>
+    </section>
     <div class="mt-5">
         <div class="owl-carousel owl-theme justify-content-center mt-5 my-auto container">
             ${testimonials.map(test => `
