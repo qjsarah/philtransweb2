@@ -12,5 +12,30 @@
 </head>
     <?php include 'components/navbar.php'; ?>
 <body class="">
+
+    <section id="download" class="mb-5 pb-5">
+      <?php include 'components/download.php';?>
+    </section>
+
+    <section id="about" class="pt-5">
+      <?php include 'components/about.php';?>
+    </section>
+
+    <section id="#" class="pt-5">
+      <?php include 'components/ads/ads_1.php';?>
+    </section>
+
+
+    <section id="#">
+      <?php include 'components/ads/ads_2.php';?>
+    </section>
+
+    <section id="#">
+      <?php include 'components/contact.php';?>
+    </section>
+
+       <section id="#">
+      <?php include 'components/footer.php';?>
+    </section>
 </body>
 </html>
