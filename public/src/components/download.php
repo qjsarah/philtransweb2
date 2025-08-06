@@ -9,7 +9,7 @@
     <img src="../../public/main/images/download_section/apple.png" alt="Google Play" class="img-fluid mx-2">
     <img src="../../public/main/images/download_section/google.png" alt="App Store" class="img-fluid mx-2">
   </div>
-  <div class="position-relative">
+  <div class="download_3_mobile position-relative">
     <img src="../../public/main/images/download_section/Download_imgs.png" class="d-block mx-auto img-fluid w-50" alt="Download Image" >
   </div>
 </section>
@@ -26,6 +26,7 @@
   .download_section {
     border-radius: 0 0 10% 10% !important;
     height: 50vh !important; /* allow it to expand */
+    padding-bottom: 50px;
   }
 
   .download_section p {
@@ -44,6 +45,12 @@
 
   .download_section h1 {
     font-size: 1.75rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .download_section {
+    padding-bottom: 550px !important;
   }
 }
 

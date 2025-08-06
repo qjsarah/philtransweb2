@@ -191,6 +191,10 @@
   right: 35%;
   }
 
+  .ads{
+    padding-top: 35%;
+  }
+
 }
 @media (max-width: 630px){
  .service-img {
@@ -211,6 +215,10 @@
     top: -120px;
     right: 25%;
   }
+
+    .ads{
+    padding-top: 25%;
+  }
 }
  @media (max-width: 320px){
  .service-img {
@@ -221,10 +229,28 @@
   top: -120px;
   right: 18%;
  }
+
+  .ads{
+    padding-top: 15%;
+  }
 }
 
 .contact{
   background-color: #000066;
+}
+
+.contact_button{
+  transition: 0.3s;
+  background-color: #000066;
+  border-style: solid;
+  border-color: white;
+  border-width: thin;
+}
+
+.contact_button:hover {
+    box-shadow: 5px 5px;
+    transition: 0.3s;
+    border-style: solid;
 }
 
 .icon-circle {
@@ -258,6 +284,8 @@
   text-decoration:underline;
 }
 
+
+
 @media (max-width: 768px) {
   .contact_nav p{
     margin-top: 30px;
@@ -276,4 +304,8 @@
 
 footer{
   background-color: #000066;
+}
+
+.download_section {
+  padding-bottom: 90px;
 }

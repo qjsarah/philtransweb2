@@ -12154,6 +12154,9 @@ textarea.form-control-lg {
     top: -120px;
     right: 35%;
   }
+  .ads {
+    padding-top: 35%;
+  }
 }
 @media (max-width: 630px) {
   .service-img {
@@ -12174,6 +12177,9 @@ textarea.form-control-lg {
     top: -120px;
     right: 25%;
   }
+  .ads {
+    padding-top: 25%;
+  }
 }
 @media (max-width: 320px) {
   .service-img {
@@ -12184,9 +12190,26 @@ textarea.form-control-lg {
     top: -120px;
     right: 18%;
   }
+  .ads {
+    padding-top: 15%;
+  }
 }
 .contact {
   background-color: #000066;
+}
+
+.contact_button {
+  transition: 0.3s;
+  background-color: #000066;
+  border-style: solid;
+  border-color: white;
+  border-width: thin;
+}
+
+.contact_button:hover {
+  box-shadow: 5px 5px;
+  transition: 0.3s;
+  border-style: solid;
 }
 
 .icon-circle {
@@ -12236,3 +12259,7 @@ textarea.form-control-lg {
 footer {
   background-color: #000066;
 }
+
+.download_section {
+  padding-bottom: 90px;
+}/*# sourceMappingURL=main.css.map */

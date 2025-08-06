@@ -23,10 +23,15 @@
   <div class="sticky-top z-3">
     <?php include 'components/navbar.php'; ?>
   </div>
-
+  
   <!-- Download Section -->
-  <section id="download">
+  <section class="download_section" id="download">
     <?php include 'components/download.php'; ?>
+  </section>
+
+  <!-- Ads Section -->
+  <section class="ads" id="#">
+    <?php include 'components/ads/ads_1.php'; ?>
   </section>
 
   <!-- Intro Section -->
@@ -45,17 +50,22 @@
   </section>
 
   <!-- Services Section -->
-  <section id="services">
+  <section class="mt-5 pt-5" id="services">
     <?php include 'components/services.php'; ?>
   </section>
 
+    <!-- Ads Section -->
+  <section id="#">
+    <?php include 'components/ads/ads_2.php'; ?>
+  </section>
+
   <!-- Testimonials Section -->
-  <section id="testimonial">
+  <section class="mt-5 pt-5 pb-5" id="testimonial">
     <?php include 'components/testimonials.php'; ?>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact">
+  <section class="mt-5 pt-5" id="contact">
     <?php include 'components/contact.php'; ?>
   </section>
 
