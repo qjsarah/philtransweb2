@@ -6,9 +6,9 @@
       <!-- Mission -->
       <div class="col-lg-4 d-flex flex-column justify-content-start text-start">
         <div class="mb-5">
-          <img src="../../public/main/images/mission_and_vission_section/mission2.png" alt="Mission Image" class="img-fluid">
+          <img src="../../public/main/images/mission_and_vission_section/mission2.png" alt="Mission Image" class="img-fluid" data-aos="fade-left" data-aos-duration="1000">
           <div class="text-start fs-5 mt-2">
-            <p>
+            <p data-aos="fade-left" data-aos-duration="1500">
               Our mission is to empower every tricycle driver in the Philippines with cutting-edge technology, transforming their profession and boosting their income.
               By embracing innovation, we aim to elevate the national transportation system while preserving the iconic tricycle experience.
               Our commitment extends to passenger comfort, ensuring a smoother and more enjoyable journey for all Filipinos.
@@ -19,15 +19,15 @@
 
       <!-- Middle Image -->
       <div class="col-lg-4 d-flex justify-content-center align-items-center">
-        <img src="../../public/main/images/mission_and_vission_section/about_image.png" alt="Middle Image" class="img-fluid" style="max-width:100%">
+        <img src="../../public/main/images/mission_and_vission_section/about_image.png" alt="Middle Image" class="img-fluid" style="max-width:100%" data-aos="fade-up" data-aos-duration="500">
       </div>
 
       <!-- Vision -->
       <div class="col-lg-4 d-flex flex-column justify-content-end text-end">
         <div class="mt-5">
-          <img src="../../public/main/images/mission_and_vission_section/vision2.png" alt="Vision Image" class="img-fluid">
+          <img src="../../public/main/images/mission_and_vission_section/vision2.png" alt="Vision Image" class="img-fluid" data-aos="fade-right" data-aos-duration="1000">
           <div class="text-end fs-5 mt-2">
-            <p>
+            <p data-aos="fade-right" data-aos-duration="1500">
               In a future powered by our app, tricycle rides become effortless. Passengers tap their way to their destination, matched efficiently with nearby drivers for prompt service.
               We ensure fair fares through transparent calculations, benefitting both riders (confident pricing) and drivers (consistent income).
               Our commitment extends to the community, partnering with locals to improve the tricycle system and elevate overall well-being.
@@ -43,9 +43,9 @@
   <div class="container d-block d-lg-none py-5">
     <!-- Mission -->
     <div class="mb-5 text-start">
-      <img src="../../public/main/images/mission_and_vission_section/mission2.png" alt="Mission Image" class="img-fluid mb-3">
+      <img src="../../public/main/images/mission_and_vission_section/mission2.png" alt="Mission Image" class="img-fluid mb-3" data-aos="fade-left" data-aos-duration="1000">
       <div class="fs-6">
-        <p>
+        <p data-aos="fade-left" data-aos-duration="1500">
           Our mission is to empower every tricycle driver in the Philippines with cutting-edge technology, transforming their profession and boosting their income.
           By embracing innovation, we aim to elevate the national transportation system while preserving the iconic tricycle experience.
           Our commitment extends to passenger comfort, ensuring a smoother and more enjoyable journey for all Filipinos.
@@ -55,14 +55,14 @@
 
     <!-- Middle Image -->
     <div class="mb-5 text-center">
-      <img src="../../public/main/images/mission_and_vission_section/about_image.png" alt="Middle Image" class="img-fluid" style="max-width: 100%;">
+      <img src="../../public/main/images/mission_and_vission_section/about_image.png" alt="Middle Image" class="img-fluid" style="max-width: 100%;" data-aos="fade-up" data-aos-duration="500">
     </div>
 
     <!-- Vision -->
     <div class="text-start">
-      <img src="../../public/main/images/mission_and_vission_section/vision2.png" alt="Vision Image" class="img-fluid mb-3">
+      <img src="../../public/main/images/mission_and_vission_section/vision2.png" alt="Vision Image" class="img-fluid mb-3" data-aos="fade-right" data-aos-duration="1000">
       <div class="fs-6">
-        <p>
+        <p data-aos="fade-right" data-aos-duration="1500">
           In a future powered by our app, tricycle rides become effortless. Passengers tap their way to their destination, matched efficiently with nearby drivers for prompt service.
           We ensure fair fares through transparent calculations, benefitting both riders (confident pricing) and drivers (consistent income).
           Our commitment extends to the community, partnering with locals to improve the tricycle system and elevate overall well-being.

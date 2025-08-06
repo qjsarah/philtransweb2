@@ -1,9 +1,9 @@
 <section class="pt-5">
-    <div class="mt-5 position-relative" data-aos="fade-up" data-aos-duration="1500">
-        <img src="../../public/main/images/services_section/services_image.png" alt="Services Image" class="service-img img-fluid"  data-aos="fade-left" data-aos-duration="1000">
+    <div class="mt-5 position-relative">
+        <img src="../../public/main/images/services_section/services_image.png" alt="Services Image" class="service-img img-fluid"  data-aos="fade-right" data-aos-duration="1500">
         <div class="bg-primary h-auto text-md-end text-center p-5 service">
-            <h4 class="text-light" data-aos="fade-left" data-aos-duration="1000">How it Works</h4>
-            <h4 class="text-warning display-4 fw-bold" data-aos="fade-left" data-aos-duration="1000">SERVICES</h4>
+            <h4 class="text-light" data-aos="fade-up" data-aos-duration="1500">How it Works</h4>
+            <h4 class="text-warning display-4 fw-bold" data-aos="fade-up" data-aos-duration="1500">SERVICES</h4>
         <div>
     </div>
 </section>

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="../../public/main/style/main.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="../node_modules/aos/dist/aos.css">
 
   <!-- JS Files -->
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -73,8 +73,8 @@
   <section id="footer">
     <?php include 'components/footer.php'; ?>
   </section>
-<!-- SCRIPTS DO NOT REMOVE TO HEAD PLEASE -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <!-- SCRIPT FOR AOS DO NOT REMOVE TO HEAD PLEASE -->
+  <script src="../node_modules/aos/dist/aos.js"></script>
   <script>
     AOS.init();
   </script>

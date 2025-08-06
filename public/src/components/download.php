@@ -1,15 +1,15 @@
- <section class="download_section pb-5 mb-5" style="background-color: #000066; height: 100vh; border-radius: 0 0 60% 60%;">
+ <section class="download_section pb-5 mb-5" style="background-color: #000066; height: 100vh; border-radius: 0 0 60% 60%;"data-aos="fade-down" data-aos-duration="500">
   <div class="text-center text-white py-5">
-    <h1 class="fs-1">DOWNLOAD OUR APP NOW!</h1>
-    <p class="w-75 w-md-75 w-lg-50 mx-auto fs-4 pt-2">
+    <h1 class="fs-1" data-aos="fade-down" data-aos-duration="1000">DOWNLOAD OUR APP NOW!</h1>
+    <p class="w-75 w-md-75 w-lg-50 mx-auto fs-4 pt-2" data-aos="fade-down" data-aos-duration="1500">
       Download the Philippine Trans App System today and experience transportation like never before. Whether you're traveling for business or pleasure, our app makes getting around the Philippines easier, safer, and more convenient than ever before.
     </p>
   </div>
   <div class="text-center mb-5">
-    <img src="../../public/main/images/download_section/apple.png" alt="Google Play" class="img-fluid mx-2">
-    <img src="../../public/main/images/download_section/google.png" alt="App Store" class="img-fluid mx-2">
+    <img src="../../public/main/images/download_section/apple.png" alt="Google Play" class="img-fluid mx-2" data-aos="fade-right" data-aos-duration="1500">
+    <img src="../../public/main/images/download_section/google.png" alt="App Store" class="img-fluid mx-2" data-aos="fade-left" data-aos-duration="1500">
   </div>
-  <div class="download_3_mobile position-relative">
+  <div class="download_3_mobile position-relative" data-aos="fade-up" data-aos-duration="1500">
     <img src="../../public/main/images/download_section/Download_imgs.png" class="d-block mx-auto img-fluid w-50" alt="Download Image" >
   </div>
 </section>
