@@ -1,10 +1,16 @@
 const imageBase64 = sessionStorage.getItem('tempImage');
   const cmsKey = sessionStorage.getItem('cmsKey');
+  console.log(cmsKey ?? 'no cmskey');
 
   const cropSizes = {
-    phone_img: { width: 1110, height: 902 },
-  };
+    phone_img: { width: 1110, height: 902 },  
+    phone2_img: {width: 531, height: 653},
+    tricycle_img: {width: 872, height: 649},
+    phone3_img: {width: 493, height: 968},
+    mission_img: {width: 494, height: 155},
+    vision_img: {width: 494, height: 155},
 
+  };
   if (!imageBase64 || !cmsKey || !cropSizes[cmsKey]) {
     alert("Missing image or CMS key.");
     window.location.href = "../index.php";
