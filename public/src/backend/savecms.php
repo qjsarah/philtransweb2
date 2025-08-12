@@ -3,7 +3,7 @@ session_start();
 include 'config.php';
 
 // Text fields
-$fields = ['header1', 'paragraph1', 'apple_dl', 'google_dl', 'phone_img', 'header2', 'paragraph2', 'paragraph2_1', 'phone2_img', 'header3', 'paragraph3', 'paragraph3_1', 'tricycle_img', 'header3_1', 'mission_img', 'vision_img', 'mission_con', 'vision_con', 'phone3_img', 'service_title', 'services_bgcolor', 'service_text', 'service_image'];
+$fields = ['header1', 'paragraph1', 'apple_dl', 'google_dl', 'phone_img', 'header2', 'paragraph2', 'paragraph2_1', 'phone2_img', 'header3', 'paragraph3', 'paragraph3_1', 'tricycle_img', 'header3_1', 'mission_img', 'vision_img', 'mission_con', 'vision_con', 'phone3_img', 'service_title', 'services_bgcolor', 'service_text', 'service_image', 'test_text', 'test_title', 'test_img'];
 
 foreach ($fields as $field) {
     if (isset($_POST[$field])) {
@@ -49,13 +49,13 @@ foreach ($fields as $field) {
             $redirectSection = '#services';
         }
 
-        // if (in_array($field, ['paragraph_test', 'test_title'])) {
-        //     $stmt = $conn->prepare("UPDATE testimonial SET content = ? WHERE key_name = ?");
-        //     $stmt->bind_param("ss", $content, $field);
-        //     $stmt->execute();
-        //     $stmt->close();
-        //     $redirectSection = '#testimonial';
-        // }
+        if (in_array($field, ['test_text', 'test_title'])) {
+            $stmt = $conn->prepare("UPDATE testimonial SET content = ? WHERE key_name = ?");
+            $stmt->bind_param("ss", $content, $field);
+            $stmt->execute();
+            $stmt->close();
+            $redirectSection = '#testimonial';
+        }
         // // ✅ Update CFS table fields
         // if (in_array($field, ['contact_bg'])) {
         //     $content = $_POST[$field];
