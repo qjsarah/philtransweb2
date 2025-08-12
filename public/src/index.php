@@ -18,12 +18,15 @@
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="../../public/main/style/main.css">
   <link rel="stylesheet" href="../node_modules/aos/dist/aos.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet" />
 
   <!-- JS Files -->
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
   <script src="../main/scripts/bootstrap.bundle.min.js"></script>
   <script src="../main/scripts/data.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
 </head>
 <body>
 
@@ -86,5 +89,6 @@
   <script>
     AOS.init();
   </script>
+  <script src="../main/scripts/script.js"></script>
 </body>
 </html>
