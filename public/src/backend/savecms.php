@@ -3,7 +3,7 @@ session_start();
 include 'config.php';
 
 // Text fields
-$fields = ['header1', 'paragraph1', 'apple_dl', 'google_dl', 'phone_img', 'header2', 'paragraph2', 'paragraph2_1', 'phone2_img', 'header3', 'paragraph3', 'paragraph3_1', 'tricycle_img', 'header3_1', 'mission_img', 'vision_img', 'mission_con', 'vision_con', 'phone3_img'];
+$fields = ['header1', 'paragraph1', 'apple_dl', 'google_dl', 'phone_img', 'header2', 'paragraph2', 'paragraph2_1', 'phone2_img', 'header3', 'paragraph3', 'paragraph3_1', 'tricycle_img', 'header3_1', 'mission_img', 'vision_img', 'mission_con', 'vision_con', 'phone3_img', 'service_title', 'services_bgcolor', 'service_text', 'service_image'];
 
 foreach ($fields as $field) {
     if (isset($_POST[$field])) {
@@ -41,13 +41,13 @@ foreach ($fields as $field) {
             $redirectSection = '#mvision';
         }
 
-        // if (in_array($field, ['service_title', 'services_bgcolor'])) {
-        //     $stmt = $conn->prepare("UPDATE services SET content = ? WHERE key_name = ?");
-        //     $stmt->bind_param("ss", $content, $field);
-        //     $stmt->execute();
-        //     $stmt->close();
-        //     $redirectSection = '#services';
-        // }
+        if (in_array($field, ['service_title', 'services_bgcolor', 'service_text'])) {
+            $stmt = $conn->prepare("UPDATE services SET content = ? WHERE key_name = ?");
+            $stmt->bind_param("ss", $content, $field);
+            $stmt->execute();
+            $stmt->close();
+            $redirectSection = '#services';
+        }
 
         // if (in_array($field, ['paragraph_test', 'test_title'])) {
         //     $stmt = $conn->prepare("UPDATE testimonial SET content = ? WHERE key_name = ?");
@@ -179,6 +179,47 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['tricycle_img'])) {
 
             if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
                 $stmt = $conn->prepare("UPDATE aboutus SET content = ? WHERE key_name = ?");
+                $stmt->bind_param("ss", $dbPath, $cmsKey);
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+    }
+}
+
+// Mission and Vision Section
+if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['mission_img', 'vision_img', 'phone3_img'])) {
+    $cmsKey = $_POST['cms_key'];
+
+    if (isset($_FILES['cms_image']) && $_FILES['cms_image']['error'] === UPLOAD_ERR_OK) {
+       $allowedKeys = [
+        'mission_img' => ['dir' => '../../main/images/mission_and_vission_section/', 'path' => ''],
+        'vision_img' => ['dir' => '../../main/images/mission_and_vission_section/', 'path' => ''],
+        'phone3_img' => ['dir' => '../../main/images/mission_and_vission_section/', 'path' => '']
+        ];
+        
+
+        if (!array_key_exists($cmsKey, $allowedKeys)) {
+            http_response_code(400);
+            exit('Invalid CMS key.');
+        }
+
+        $uploadDir = $allowedKeys[$cmsKey]['dir'];
+        $relativePath = $allowedKeys[$cmsKey]['path'];
+
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        $maxSize = 2 * 1024 * 1024; // 2MB
+
+        $fileType = $_FILES['cms_image']['type'];
+        $fileSize = $_FILES['cms_image']['size'];
+
+        if (in_array($fileType, $allowedTypes) && $fileSize <= $maxSize) {
+            $filename = time() . '_' . basename($_FILES['cms_image']['name']);
+            $targetPath = $uploadDir . $filename;
+            $dbPath = $relativePath . $filename;
+
+            if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+                $stmt = $conn->prepare("UPDATE missionvision SET content = ? WHERE key_name = ?");
                 $stmt->bind_param("ss", $dbPath, $cmsKey);
                 $stmt->execute();
                 $stmt->close();
