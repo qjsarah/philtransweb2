@@ -60,6 +60,11 @@
     <?php include 'components/mvision.php'; ?>
   </section>
 
+  <!-- Ads 2 Section -->
+  <section id="ads_2">
+    <?php include 'components/ads/ads_2.php'; ?>
+  </section>
+
   <!-- Services Section -->
   <section class="mt-5 pt-5" id="services">
     <?php include 'components/services.php'; ?>
@@ -67,7 +72,7 @@
 
     <!-- Ads Section -->
   <section id="#">
-    <?php include 'components/ads/ads_2.php'; ?>
+    <?php include 'components/ads/ads_3.php'; ?>
   </section>
 
   <!-- Testimonials Section -->

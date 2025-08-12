@@ -58,9 +58,9 @@ while ($row = $result->fetch_assoc()) {
                             <textarea name="paragraph2" class="form-control mb-3" rows="4"><?php echo htmlspecialchars($content['paragraph2'] ?? "PTAS breaks the mold of traditional transportation apps. They're not just about getting you from point A to point B; they're shaking up the transportation industry with a people-centric approach. PTAS goes beyond offering rides. They empower drivers by increasing their earning potential and fostering positive changes in their lives. But the impact doesn't stop there. PTAS is dedicated to creating a smoother and more enjoyable experience for passengers as well."); ?></textarea>
                             <textarea name="paragraph2_1" class="form-control mb-3" rows="4"><?php echo htmlspecialchars($content['paragraph2_1'] ?? "In essence, PTAS represents a paradigm shift in transportation, where the focus lies not only on the journey's endpoint but also on enhancing the journey itself. It's about fostering empowerment, enriching experiences, and prioritizing the well-being of both drivers and passengers in every aspect of their transportation needs."); ?></textarea>
                             <div>
-                                <img src="../main/images/intro_section/<?php echo htmlspecialchars($content['phone2_image'] ?? 'intro_image.png')?>" class="current-cms-img img-fluid" data-cms-key="phone2_image" alt="">
+                                <img src="../main/images/intro_section/<?php echo htmlspecialchars($content['phone2_img'] ?? 'intro_image.png')?>" class="current-cms-img img-fluid" data-cms-key="phone2_img" alt="">
                                 <?php if (isset($_SESSION['user_id'])): ?>
-                                    <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone2_image" accept="image/*">
+                                    <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone2_img" accept="image/*">
                                 <?php endif; ?>
                             </div>
                             <div class="text-center modal-footer">
