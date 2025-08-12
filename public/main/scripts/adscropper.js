@@ -9,7 +9,14 @@ const imageBase64 = sessionStorage.getItem('tempImage');
     phone3_img: {width: 493, height: 968},
     mission_img: {width: 494, height: 155},
     vision_img: {width: 494, height: 155},
-
+    service_image: {width: 500, height: 336}, 
+    testimonial_image: {width: 500, height: 336}, 
+    ads1: { width: 666, height: 182 },
+    ads2: { width: 666, height: 182 },
+    ads3: {width: 513, height: 484},
+    ads4: {width: 513, height: 484},
+    ads5: { width: 666, height: 182 },
+    ads6: { width: 666, height: 182 },
   };
   if (!imageBase64 || !cmsKey || !cropSizes[cmsKey]) {
     alert("Missing image or CMS key.");

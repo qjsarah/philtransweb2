@@ -29,7 +29,7 @@ while ($row = $result->fetch_assoc()) {
 <section class="pt-5" id="services-container">
     <?php if (isset($_SESSION['user_id'])): ?>
         <div class="mt-5 position-relative">
-            <img src="../../public/main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'Download_imgs.png'); ?>" 
+            <img src="../../public/main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'services_image.png'); ?>" 
                  alt="Services Image" 
                  class="service-img img-fluid"  
                  data-aos="fade-right" 
