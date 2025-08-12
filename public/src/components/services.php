@@ -149,7 +149,7 @@ while ($row = $result->fetch_assoc()) {
     <?php else: ?>
         <!-- Guest card display -->
          <div class="mt-5 position-relative">
-            <img src="../../public/main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'Download_imgs.png'); ?>" 
+            <img src="../../public/main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'services_image.png'); ?>" 
                  alt="Services Image" 
                  class="service-img img-fluid"  
                  data-aos="fade-right" 

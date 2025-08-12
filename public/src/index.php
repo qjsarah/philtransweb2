@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
-  <?php session_start(); ?>
+<?php session_start(); ?>
 <?php if (isset($_SESSION['user_id'])): ?>
   <div style="position: fixed; top: 10px; left: 10px; z-index: 1000;">
     <a href="backend/logout.php" class="btn btn-primary">
@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <title>Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="icon" href="../main/images/favicon.png"> 
   <!-- CSS Files -->
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css">
