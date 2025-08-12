@@ -15,3 +15,4 @@
 </div>
 <script src="../../../public/main/scripts/bootstrap.bundle.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+<script src="../../main/scripts/adscropper.js"></script>
