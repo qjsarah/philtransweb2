@@ -55,7 +55,7 @@ while ($row = $result->fetch_assoc()) {
                       <textarea name="header3_1" class="form-control mb-3" rows="2"><?php echo htmlspecialchars($content['header3_1'] ?? "ABOUT US"); ?></textarea>
                       <textarea name="paragraph3_1" class="form-control mb-3" rows="5"><?php echo htmlspecialchars($content['paragraph3_1'] ?? ""); ?></textarea>
                       <div class="text-center modal-footer">
-                        <button type="submit" class="btn btn-success mb-2 save-button">Save</button>                        <button type="button" class="btn btn-secondary mb-2 ms-2" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-success mb-2 save-button">Save</button>                        <button type="button" class="btn btn-secondary mb-2 ms-2" data-bs-dismiss="modal">Cancel</button>
                       </div>
                     </form>
                   </div>

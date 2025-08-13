@@ -122,5 +122,35 @@
   document.body.appendChild(document.getElementById('editTestimonial'));
   </script>
   <script src="../main/scripts/script.js"></script>
+  <script>
+    document.querySelectorAll('.save-button').forEach(button => {
+        button.addEventListener('click', function () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to save your changes?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, save it!',
+                cancelButtonText: 'Cancel',
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#6c757d'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                  swal.fire({
+                    title: 'Saved!',
+                    text: 'Your changes have been saved successfully.',
+                    icon: 'success',  
+                    showConfirmButton: false,
+                  }).then(() => {
+                    const form = button.closest('form'); // find the form this button belongs to
+                    if (form) {
+                        form.submit();
+                    }
+                  })
+                }
+            });
+        });
+    });
+  </script>
 </body>
 </html>

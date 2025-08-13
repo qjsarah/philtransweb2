@@ -45,8 +45,8 @@ while ($row = $result->fetch_assoc()) {
                       <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone_img" accept="image/*">
                   <?php endif; ?>
                 </div>
-                <div id="edit-buttons" class="text-center modal-footer">
-                  <button type="submit" form="header1-form" class="btn btn-success mb-2">Save</button>
+                <div class="text-center modal-footer">
+                  <button type="button" form="header1-form" class="btn btn-success mb-2 save-button">Save</button>
                   <button type="button" class="btn btn-secondary mb-2 ms-2" data-bs-dismiss="modal">Cancel</button>
                 </div>
               </form>

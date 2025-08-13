@@ -38,7 +38,7 @@ foreach ($fields as $field) {
             $stmt->bind_param("ss", $content, $field);
             $stmt->execute();
             $stmt->close();
-            $redirectSection = '#mvision';
+            $redirectSection = '#missionvission';
         }
 
         if (in_array($field, ['service_title', 'services_bgcolor', 'service_text'])) {

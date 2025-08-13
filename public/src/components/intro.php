@@ -64,7 +64,7 @@ while ($row = $result->fetch_assoc()) {
                                 <?php endif; ?>
                             </div>
                             <div class="text-center modal-footer">
-                                <button type="submit" class="btn btn-success mb-2">Save</button>
+                                <button type="button" class="save-button btn btn-success mb-2">Save</button>
                                 <button type="button" class="btn btn-secondary mb-2 ms-2" data-bs-dismiss="modal">Cancel</button>
                             </div>
                         </form>

@@ -87,7 +87,7 @@ while ($row = $result->fetch_assoc()) {
               <?php endif; ?>
             </div>
             <div id="edit-buttons" class="text-center modal-footer">
-              <button type="submit" form="mvision-form" class="btn btn-success mb-2">Save</button>
+              <button type="button" form="mvision-form" class="save-button btn btn-success mb-2">Save</button>
               <button type="button" class="btn btn-secondary mb-2 ms-2" data-bs-dismiss="modal">Cancel</button>
             </div>
           </form>
