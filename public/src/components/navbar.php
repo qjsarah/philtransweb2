@@ -12,7 +12,7 @@
             </a>
         </li>
         <li class="nav-item"><a class="nav-link  text-primary" href="#testimonial">Testimonial</a></li>
-        <li class="nav-item"><a class="nav-link  text-primary" href="#">Contact</a></li>
+        <li class="nav-item"><a class="nav-link  text-primary" href="#contact">Contact</a></li>
         <?php if (isset($_SESSION['user_id'])): ?>
           <li style="z-index: 1000;" class="nav-item"><a href="backend/logout.php" class="nav-link text-secondary">Logout</a></li>
         <?php endif; ?>
@@ -34,7 +34,7 @@
           <li class="nav-item"><a class="nav-link  text-primary" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link  text-primary" href="#services">Services</a></li>
           <li class="nav-item"><a class="nav-link  text-primary" href="#testimonial">Testimonial</a></li>
-          <li class="nav-item"><a class="nav-link  text-primary" href="#">Contact</a></li>
+          <li class="nav-item"><a class="nav-link  text-primary" href="#contact">Contact</a></li>
           <?php if (isset($_SESSION['user_id'])): ?>
             <li style="z-index: 1000;" class="nav-item"><a href="#" class="nav-link text-secondary">Dashboard</a></li>
             <li style="z-index: 1000;" class="nav-item"><a href="backend/logout.php" class="nav-link  text-secondary">Logout</a></li>
