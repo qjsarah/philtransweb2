@@ -12262,4 +12262,32 @@ footer {
 
 .download_section {
   padding-bottom: 90px;
+}
+
+.swal-custom-popup {
+  border: 3px solid #000000;
+  border-radius: 15px;
+}
+
+.swal-custom-title {
+  font-family: "Arial", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.swal-custom-button {
+  background-color: #000066;
+  color: white;
+  margin-top: 0;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+  font-size: 20px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.swal-custom-button:hover {
+  background-color: #000066;
+  color: #ffffff;
+  box-shadow: 5px 5px;
 }/*# sourceMappingURL=main.css.map */

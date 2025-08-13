@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param('sss', $name, $email, $hashedPassword);
 
     if ($stmt->execute()) {
-        echo json_encode(['status' => 'success', 'message' => 'Registered successfully.']);
+        echo json_encode(['status' => 'success', 'message' => 'Redirecting....']);
     } else {
         if ($conn->errno === 1062) {
             echo json_encode(['status' => 'error', 'message' => 'Email already taken.']);

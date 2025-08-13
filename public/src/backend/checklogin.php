@@ -23,10 +23,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_result($userId, $hashedPassword, $activationHash);
     $stmt->fetch();
 
+ 
+    if (!password_verify($password, $hashedPassword)) {
+        echo json_encode(['status' => 'error', 'message' => 'Invalid email or password.']);
+        exit;
+    }
+
+    if (!empty($activationHash)) {
+        echo json_encode(['status' => 'error', 'message' => 'Account not activated.']);
+        exit;
+    }
+
     session_start();
     $_SESSION['user_id'] = $userId; 
 
-    echo json_encode(['status' => 'success', 'message' => 'Login successful.']);
+    echo json_encode(['status' => 'success', 'message' => 'Redirecting...']);
 }
 
 $stmt->close();
