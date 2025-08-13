@@ -37,7 +37,6 @@ while ($row = $result->fetch_assoc()) {
         <div class="text-center mb-5">
           <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".introContent">Edit</button>
           <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".edit-intro-image">Edit Image</button>
-
         </div>
       </div>
 
@@ -78,7 +77,11 @@ while ($row = $result->fetch_assoc()) {
               <div class="modal-body">
                 <form id="all-form" method="POST" action="backend/savecms.php" class="text-center">
                   <img src="../main/images/intro_section/<?php echo htmlspecialchars($content['phone2_img'] ?? 'intro_image.png')?>" class="current-cms-img img-fluid w-25" data-cms-key="phone2_img" alt="">
-                  <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone2_img" accept="image/*">
+                  <div class="upload-box uploadBox">
+                    <input type="file" class="form-control mb-2 cms-image-input fileInput" data-cms-key="phone2_img" accept="image/*">
+                    <p>Click or drag a file here to upload</p>
+                  </div>
+                  <!-- <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone2_img" accept="image/*"> -->
                 </form>
               </div>
             </div>
@@ -143,4 +146,3 @@ while ($row = $result->fetch_assoc()) {
   </div>
 
 </section>
-

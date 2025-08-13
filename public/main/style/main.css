@@ -12243,6 +12243,25 @@ textarea.form-control-lg {
   text-decoration: underline;
 }
 
+.upload-box {
+  border: 2px dashed #aaa;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  color: #666;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.upload-box.dragover {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+}
+
+.upload-box input {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .contact_nav p {
     margin-top: 30px;

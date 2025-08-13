@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 <?php session_start(); ?>
-<?php if (isset($_SESSION['user_id'])): ?>
-  <div style="position: fixed; top: 10px; left: 10px; z-index: 1000;">
-    <a href="backend/logout.php" class="btn btn-primary">
-      <i class="fas fa-sign-out-alt"></i> Logout
-    </a>
-  </div>
-<?php endif; ?>
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
@@ -140,6 +133,7 @@
                     title: 'Saved!',
                     text: 'Your changes have been saved successfully.',
                     icon: 'success',  
+                    timer: 500,
                     showConfirmButton: false,
                   }).then(() => {
                     const form = button.closest('form'); // find the form this button belongs to
@@ -150,6 +144,41 @@
                 }
             });
         });
+    });
+
+    const uploadBoxes = document.querySelectorAll(".uploadBox");
+    const fileInputs = document.querySelectorAll(".fileInput");
+
+    uploadBoxes.forEach((box, index) => {
+      const input = fileInputs[index]; // Link each box to its file input
+
+      // Click to open file dialog
+      box.addEventListener("click", () => input.click());
+
+      // Highlight on drag
+      box.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        box.classList.add("dragover");
+      });
+
+      box.addEventListener("dragleave", () => {
+        box.classList.remove("dragover");
+      });
+
+      // Handle dropped files
+      box.addEventListener("drop", (e) => {
+        e.preventDefault();
+        box.classList.remove("dragover");
+
+        if (e.dataTransfer.files.length) {
+          input.files = e.dataTransfer.files;
+        }
+      });
+
+      // Handle normal file selection
+      input.addEventListener("change", () => {
+        // No alert — just keeps the file in the input
+      });
     });
   </script>
 </body>

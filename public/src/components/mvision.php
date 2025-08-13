@@ -91,15 +91,24 @@ while ($row = $result->fetch_assoc()) {
           <form id="mvision-form" method="POST" action="backend/savecms.php" class="text-center">
           <div class="d-flex align-items-center">
             <img src="../main/images/mission_and_vission_section/<?php echo htmlspecialchars($content['mission_img'] ?? 'mission2.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="mission_img">
-            <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="mission_img" accept="image/*">
+            <div class="upload-box uploadBox">
+                  <input type="file" class="form-control mb-2 cms-image-input fileInput" data-cms-key="mission_img" accept="image/*">
+                  <p>Click or drag a file here to upload</p>
+            </div>
           </div>
           <div class="d-flex align-items-center">
             <img src="../main/images/mission_and_vission_section/<?php echo htmlspecialchars($content['vision_img'] ?? 'vision2.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="vision_img">
-            <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="vision_img" accept="image/*">
+            <div class="upload-box uploadBox">
+                  <input type="file" class="form-control mb-2 cms-image-input fileInput" data-cms-key="vision_img" accept="image/*">
+                  <p>Click or drag a file here to upload</p>
+            </div>
           </div>
           <div class="d-flex align-items-center">
             <img src="../main/images/mission_and_vission_section/<?php echo htmlspecialchars($content['phone3_img'] ?? 'about_image.png')?>" alt="" class="current-cms-img img-fluid w-25" data-cms-key="phone3_img">
-            <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone3_img" accept="image/*">
+            <div class="upload-box uploadBox">
+                  <input type="file" class="form-control mb-2 cms-image-input fileInput" data-cms-key="phone3_img" accept="image/*">
+                  <p>Click or drag a file here to upload</p>
+            </div>
           </div>
           </form>
         </div>
