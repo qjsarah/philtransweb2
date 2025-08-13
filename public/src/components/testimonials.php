@@ -102,8 +102,7 @@ while ($row = $result->fetch_assoc()) {
                         <textarea name="test_text" id="test_text" class="form-control mb-3" rows="2"><?php echo htmlspecialchars($content['test_text'] ?? "What our Client Says"); ?></textarea>
                         <textarea name="test_title" id="test_title" class="form-control mb-3" rows="2"><?php echo htmlspecialchars($content['test_title'] ?? "Testimonial"); ?></textarea>
                         <div class="text-center modal-footer">
-                            <button type="submit" class="btn btn-success mb-2 save-button">Save</button>
-                            <button type="button" class="btn btn-secondary mb-2 ms-2" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-success mb-2 save-button">Save Section</button>
                         </div>
                     </form>
                     <br><hr>

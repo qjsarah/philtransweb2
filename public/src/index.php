@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 <?php session_start(); ?>
-<?php if (isset($_SESSION['user_id'])): ?>
-  <div style="position: fixed; top: 10px; left: 10px; z-index: 1000;">
-    <a href="backend/logout.php" class="btn btn-primary">
-      <i class="fas fa-sign-out-alt"></i> Logout
-    </a>
-  </div>
-<?php endif; ?>
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
@@ -140,6 +133,7 @@
                     title: 'Saved!',
                     text: 'Your changes have been saved successfully.',
                     icon: 'success',  
+                    timer: 500,
                     showConfirmButton: false,
                   }).then(() => {
                     const form = button.closest('form'); // find the form this button belongs to

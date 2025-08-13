@@ -95,7 +95,7 @@ while ($row = $result->fetch_assoc()) {
                                 <input type="text" name="service_title" class="form-control" value="<?php echo htmlspecialchars($content['service_title'] ?? "SERVICES"); ?>">
                             </div>
                             <div class="text-end">
-                                <button type="submit" class="btn btn-success">Save Section</button>
+                                <button type="button" class="btn btn-success save-button">Save Section</button>
                             </div>
                         </form>
 
