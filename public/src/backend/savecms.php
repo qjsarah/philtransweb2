@@ -228,6 +228,82 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['mission_img', 'vis
     }
 }
 
+// Services Section
+if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['service_image'])) {
+    $cmsKey = $_POST['cms_key'];
+
+    if (isset($_FILES['cms_image']) && $_FILES['cms_image']['error'] === UPLOAD_ERR_OK) {
+       $allowedKeys = [
+        'service_image' => ['dir' => '../../main/images/services_section/', 'path' => '']];
+        
+
+        if (!array_key_exists($cmsKey, $allowedKeys)) {
+            http_response_code(400);
+            exit('Invalid CMS key.');
+        }
+
+        $uploadDir = $allowedKeys[$cmsKey]['dir'];
+        $relativePath = $allowedKeys[$cmsKey]['path'];
+
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        $maxSize = 2 * 1024 * 1024; // 2MB
+
+        $fileType = $_FILES['cms_image']['type'];
+        $fileSize = $_FILES['cms_image']['size'];
+
+        if (in_array($fileType, $allowedTypes) && $fileSize <= $maxSize) {
+            $filename = time() . '_' . basename($_FILES['cms_image']['name']);
+            $targetPath = $uploadDir . $filename;
+            $dbPath = $relativePath . $filename;
+
+            if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+                $stmt = $conn->prepare("UPDATE services SET content = ? WHERE key_name = ?");
+                $stmt->bind_param("ss", $dbPath, $cmsKey);
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+    }
+}
+
+// Testimonials Section
+if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['test_img'])) {
+    $cmsKey = $_POST['cms_key'];
+
+    if (isset($_FILES['cms_image']) && $_FILES['cms_image']['error'] === UPLOAD_ERR_OK) {
+       $allowedKeys = [
+        'test_img' => ['dir' => '../../main/images/testimonial_section/', 'path' => '']];
+        
+
+        if (!array_key_exists($cmsKey, $allowedKeys)) {
+            http_response_code(400);
+            exit('Invalid CMS key.');
+        }
+
+        $uploadDir = $allowedKeys[$cmsKey]['dir'];
+        $relativePath = $allowedKeys[$cmsKey]['path'];
+
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        $maxSize = 2 * 1024 * 1024; // 2MB
+
+        $fileType = $_FILES['cms_image']['type'];
+        $fileSize = $_FILES['cms_image']['size'];
+
+        if (in_array($fileType, $allowedTypes) && $fileSize <= $maxSize) {
+            $filename = time() . '_' . basename($_FILES['cms_image']['name']);
+            $targetPath = $uploadDir . $filename;
+            $dbPath = $relativePath . $filename;
+
+            if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+                $stmt = $conn->prepare("UPDATE testimonial SET content = ? WHERE key_name = ?");
+                $stmt->bind_param("ss", $dbPath, $cmsKey);
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+    }
+}
+
 // Redirection
 if ($redirectSection) {
     header("Location: ../index.php{$redirectSection}");
