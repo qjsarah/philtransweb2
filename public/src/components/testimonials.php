@@ -208,5 +208,24 @@ while ($row = $result->fetch_assoc()) {
         }
     });
   
-  
+  document.querySelectorAll('.delete-testimonial-btn').forEach(button => {
+  button.addEventListener('click', function () {
+    const form = this.closest('form');
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This card will be permanently deleted!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#aaa',
+      confirmButtonText: 'Delete',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        form.submit();
+      }
+    });
+  });
+});
 </script>
