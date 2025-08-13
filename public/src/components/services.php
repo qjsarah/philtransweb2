@@ -49,10 +49,30 @@ while ($row = $result->fetch_assoc()) {
                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editServiceModal">
                     Edit
                 </button>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target=".edit-services-image">
+                    Edit Image
+                </button>
             </div>
         </div>
 
         <!-- Modal -->
+        <div class="modal fade edit-services-image" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit Content</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="all-form" method="POST" action="backend/savecms.php" class="text-center">
+                        <img src="../main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'services_image.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="service_image">
+                        <input type="file" name="service_image" class="form-control" accept="image/*">
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+                                     
         <div class="modal fade" id="editServiceModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-scrollable">
                 <div class="modal-content">
@@ -70,10 +90,6 @@ while ($row = $result->fetch_assoc()) {
                             <div class="mb-3">
                                 <label class="form-label">Service Title</label>
                                 <input type="text" name="service_title" class="form-control" value="<?php echo htmlspecialchars($content['service_title'] ?? "SERVICES"); ?>">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Service Image</label>
-                                <input type="file" name="service_image" class="form-control" accept="image/*">
                             </div>
                             <div class="text-end">
                                 <button type="submit" class="btn btn-success">Save Section</button>
@@ -149,7 +165,7 @@ while ($row = $result->fetch_assoc()) {
     <?php else: ?>
         <!-- Guest card display -->
          <div class="mt-5 position-relative">
-            <img src="../../public/main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'Download_imgs.png'); ?>" 
+            <img src="../../public/main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'services_image.png'); ?>" 
                  alt="Services Image" 
                  class="service-img img-fluid"  
                  data-aos="fade-right" 

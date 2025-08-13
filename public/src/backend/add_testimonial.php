@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("INSERT INTO testimonials_table (test_content, test_name, roles, stars) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("sssi", $content, $name, $role, $stars);
     $stmt->execute();
+    header("Location: ../index.php#testimonial");  
 }
 
-header("Location: ../index.php#testimonials");
 exit();
 ?>

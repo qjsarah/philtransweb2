@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
-  <?php session_start(); ?>
+<?php session_start(); ?>
 <?php if (isset($_SESSION['user_id'])): ?>
   <div style="position: fixed; top: 10px; left: 10px; z-index: 1000;">
     <a href="backend/logout.php" class="btn btn-primary">
@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <title>Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="icon" href="../main/images/favicon.png"> 
   <!-- CSS Files -->
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css">
@@ -26,7 +26,7 @@
   <script src="../main/scripts/bootstrap.bundle.min.js"></script>
   <script src="../main/scripts/data.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 </head>
 <body>
 
@@ -122,5 +122,35 @@
   document.body.appendChild(document.getElementById('editTestimonial'));
   </script>
   <script src="../main/scripts/script.js"></script>
+  <script>
+    document.querySelectorAll('.save-button').forEach(button => {
+        button.addEventListener('click', function () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to save your changes?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, save it!',
+                cancelButtonText: 'Cancel',
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#6c757d'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                  swal.fire({
+                    title: 'Saved!',
+                    text: 'Your changes have been saved successfully.',
+                    icon: 'success',  
+                    showConfirmButton: false,
+                  }).then(() => {
+                    const form = button.closest('form'); // find the form this button belongs to
+                    if (form) {
+                        form.submit();
+                    }
+                  })
+                }
+            });
+        });
+    });
+  </script>
 </body>
 </html>
