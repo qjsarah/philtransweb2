@@ -37,7 +37,6 @@ while ($row = $result->fetch_assoc()) {
         <div class="text-center mb-5">
           <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".introContent">Edit</button>
           <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".edit-intro-image">Edit Image</button>
-
         </div>
       </div>
 

@@ -60,7 +60,7 @@ while ($row = $result->fetch_assoc()) {
               <form id="header1-form" method="POST" action="backend/savecms.php" class="text-center">
                   <img src="../main/images/download_section/<?php echo htmlspecialchars($content['phone_img'] ?? 'Download_imgs.png')?>" alt="phone" class="img-fluid w-50 current-cms-img mx-auto" data-cms-key="phone_img">
                   <div class="upload-box uploadBox">
-                    <input type="file" class="cms-image-input fileInput" data-cms-key="phone_img " accept="image/*">
+                    <input type="file" class="cms-image-input fileInput" data-cms-key="phone_img" accept="image/*">
                     <p>Click or drag a file here to upload</p>
                   </div>
               </form>
