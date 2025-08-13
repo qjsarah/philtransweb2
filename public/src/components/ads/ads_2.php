@@ -50,9 +50,6 @@ while ($row = $result->fetch_assoc()) {
               </div>
             </div>
           <?php endif; ?>
-          <div id="edit-buttons" class="text-center modal-footer">
-            <button type="button" class="btn btn-secondary mb-2 ms-2" data-bs-dismiss="modal">Cancel</button>
-          </div>
         </div>
           </div>
       </div>
