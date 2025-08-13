@@ -1,7 +1,7 @@
 <?php
 include 'backend/config.php';
 
-$keys = ['test_text', 'test_title'];
+$keys = ['test_text', 'test_title', 'test_img'];
 $placeholders = implode(',', array_fill(0, count($keys), '?'));
 $sql = "SELECT key_name, content FROM testimonial WHERE key_name IN ($placeholders)";
 $stmt = $conn->prepare($sql);
@@ -34,11 +34,15 @@ while ($row = $result->fetch_assoc()) {
     const testimonialDiv = document.getElementById('testimonial');
     testimonialDiv.innerHTML = `
     
-    <section class="pt-5">
+    <section class="pt-5"> 
         <div class="mt-5 position-relative" data-aos="fade-right" data-aos-duration="1500">
             <div class="bg-primary h-auto text-lg-start  testimonial-header p-5">
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <button type="button" class="btn btn-warning " onclick="toggleEditAll(this)" data-modal-target=".testimonialContent">Edit</button>
+                    <button type="button" class="btn btn-warning " onclick="toggleEditAll(this)" data-modal-target=".edit-testimonial-image">Edit Image</button>
+                <?php endif; ?>
                 <h4 class="text-light" data-aos="fade-right" data-aos-duration="1500"><?php echo htmlspecialchars($content['test_text'] ?? 'What our Client Says'); ?></h4>
-                <h4 class="text-warning display-4 fw-bold" data-aos="fade-right" data-aos-duration="1500"><?php echo htmlspecialchars($content['test_title'] ?? 'TESTIMONIAL'); ?></h4>
+                <h4 class="text-warning display-4 fw-bold" data-aos="fade-right" data-aos-duration="1500"><?php echo htmlspecialchars($content['test_title'] ?? 'TESTIMONIAL'); ?></h4>     
             <div>
             <img src="../../public/main/images/testimonial_section/<?php echo htmlspecialchars($content['testimonial_image'] ?? 'testimonial_image.png'); ?>" alt="" class="testimonial-img img-fluid" data-aos="fade-up" data-aos-duration="1000">
         </div>
@@ -66,11 +70,22 @@ while ($row = $result->fetch_assoc()) {
             </div>
         <?php endforeach; ?>
         </div>
-        <?php if (isset($_SESSION['user_id'])): ?>
-            <div class="text-center">
-                        <button type="button" class="btn btn-warning " onclick="toggleEditAll(this)" data-modal-target=".testimonialContent">Edit</button>
-                    </div>
-        <?php endif; ?>
+    </div>
+    <div class="modal fade edit-testimonial-image" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Content</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="all-form" method="POST" action="backend/savecms.php" class="text-center">
+                    <img src="../main/images/testimonial_section/<?php echo htmlspecialchars($content['test_img'] ?? 'testimonial_image.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="testimonial_image">
+                    <input type="file" name="service_image" class="form-control" accept="image/*">
+                </form>
+            </div>
+            </div>
+        </div>
     </div>
     <div class="modal fade testimonialContent">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">

@@ -20,6 +20,7 @@ while ($row = $result->fetch_assoc()) {
   <?php if (isset($_SESSION['user_id'])): ?>
     <div class="text-center">
        <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".editContentModal">Edit</button>
+       <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".edit-download-image">Edit Image</button>
     </div>
   <div class="text-center text-white py-2">
     <h1 class="fs-1" data-aos="fade-down" data-aos-duration="1000"><?php echo htmlspecialchars($content['header1']  ?? 'DOWNLOAD OUR APP NOW!'); ?></h1>
@@ -39,16 +40,26 @@ while ($row = $result->fetch_assoc()) {
               <form id="header1-form" method="POST" action="backend/savecms.php">
                 <textarea name="header1" class="form-control mb-3" rows="2"><?php echo htmlspecialchars($content['header1']??'DOWNLOAD OUR APP NOW!'); ?></textarea>
                 <textarea name="paragraph1" class="form-control mb-3" rows="5"><?php echo htmlspecialchars($content['paragraph1']??"Download the Philippine Trans App System today and experience transportation like never before. Whether you're traveling for business or pleasure, our app makes getting around the Philippines easier, safer, and more convenient than ever before. "); ?></textarea>
-                <div class="mt-5 me-5 w-100 mx-auto">
-                  <img src="../main/images/download_section/<?php echo htmlspecialchars($content['phone_img'] ?? 'Download_imgs.png')?>" alt="phone" class="img-fluid current-cms-img" data-cms-key="phone_img">
-                  <?php if (isset($_SESSION['user_id'])): ?>
-                      <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone_img" accept="image/*">
-                  <?php endif; ?>
-                </div>
                 <div class="text-center modal-footer">
                   <button type="button" form="header1-form" class="btn btn-success mb-2 save-button">Save</button>
                   <button type="button" class="btn btn-secondary mb-2 ms-2" data-bs-dismiss="modal">Cancel</button>
                 </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade edit-download-image" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Edit Content</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="header1-form" method="POST" action="backend/savecms.php" class="text-center">
+                  <img src="../main/images/download_section/<?php echo htmlspecialchars($content['phone_img'] ?? 'Download_imgs.png')?>" alt="phone" class="img-fluid w-50 current-cms-img mx-auto" data-cms-key="phone_img">
+                  <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone_img" accept="image/*">
               </form>
             </div>
           </div>

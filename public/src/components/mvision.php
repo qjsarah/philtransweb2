@@ -17,7 +17,8 @@ while ($row = $result->fetch_assoc()) {
 <section class="text-white" style="background-color:#000066;">
   <?php if (isset($_SESSION['user_id'])): ?>
     <div class="text-center mb-5">
-          <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".mvisionContent">Edit</button>
+      <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".mvisionContent">Edit</button>
+      <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".edit-mv-images">Edit Image</button>
     </div>
   <!-- Desktop Layout (No Change) -->
   <div class="container d-none d-lg-block">
@@ -70,26 +71,36 @@ while ($row = $result->fetch_assoc()) {
           <form id="mvision-form" method="POST" action="backend/savecms.php">
             <textarea name="mission_con" class="form-control mb-3" rows="5"><?php echo htmlspecialchars($content['mission_con'] ?? ""); ?></textarea>
             <textarea name="vision_con" class="form-control mb-3" rows="5"><?php echo htmlspecialchars($content['vision_con'] ?? ""); ?></textarea>
-            <div class="text-center mb-3">
-              <img src="../main/images/mission_and_vission_section/<?php echo htmlspecialchars($content['mission_img'] ?? 'mission2.png')?>" alt="" class="current-cms-img img-fluid" data-cms-key="mission_img">
-              <?php if (isset($_SESSION['user_id'])): ?>
-                <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="mission_img" accept="image/*">
-              <?php endif; ?>
-              <img src="../main/images/mission_and_vission_section/<?php echo htmlspecialchars($content['vision_img'] ?? 'vision2.png')?>" alt="" class="current-cms-img img-fluid" data-cms-key="vision_img">
-              <?php if (isset($_SESSION['user_id'])): ?>
-                <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="vision_img" accept="image/*">
-              <?php endif; ?>
-            </div>
-            <div class="text-center mb-3">
-              <img src="../main/images/mission_and_vission_section/<?php echo htmlspecialchars($content['phone3_img'] ?? 'about_image.png')?>" alt="" class="current-cms-img img-fluid" data-cms-key="phone3_img">
-              <?php if (isset($_SESSION['user_id'])): ?>
-                <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone3_img" accept="image/*">
-              <?php endif; ?>
-            </div>
             <div id="edit-buttons" class="text-center modal-footer">
               <button type="button" form="mvision-form" class="save-button btn btn-success mb-2">Save</button>
               <button type="button" class="btn btn-secondary mb-2 ms-2" data-bs-dismiss="modal">Cancel</button>
             </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="modal fade edit-mv-images" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit Content</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="mvision-form" method="POST" action="backend/savecms.php" class="text-center">
+          <div class="d-flex align-items-center">
+            <img src="../main/images/mission_and_vission_section/<?php echo htmlspecialchars($content['mission_img'] ?? 'mission2.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="mission_img">
+            <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="mission_img" accept="image/*">
+          </div>
+          <div class="d-flex align-items-center">
+            <img src="../main/images/mission_and_vission_section/<?php echo htmlspecialchars($content['vision_img'] ?? 'vision2.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="vision_img">
+            <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="vision_img" accept="image/*">
+          </div>
+          <div class="d-flex align-items-center">
+            <img src="../main/images/mission_and_vission_section/<?php echo htmlspecialchars($content['phone3_img'] ?? 'about_image.png')?>" alt="" class="current-cms-img img-fluid w-25" data-cms-key="phone3_img">
+            <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone3_img" accept="image/*">
+          </div>
           </form>
         </div>
       </div>

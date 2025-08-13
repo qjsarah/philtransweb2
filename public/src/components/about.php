@@ -63,11 +63,29 @@ while ($row = $result->fetch_assoc()) {
               </div>
             </div>
     </div>
-    <div class="text-center py-5">
-                <div class="text-center mb-5">
-                <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".aboutContent">Edit</button>
-                </div>
+    <div class="modal fade edit-about-image" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                  <h3 class="modal-title">Edit Content</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="all-form" method="POST" action="backend/savecms.php" class="text-center">
+                  <img src="../main/images/about_section/<?php echo htmlspecialchars($content['tricycle_img'] ?? 'desktop_trycicle.png')?>" class="current-cms-img img-fluid w-50" data-cms-key="tricycle_img" alt="">
+                  <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="tricycle_img" accept="image/*">
+                </form>
+              </div>
             </div>
+        </div>
+      </div>
+    <div class="text-center py-5">
+        <div class="text-center mb-5">
+          <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".aboutContent">Edit</button>
+          <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".edit-about-image">Edit Image</button>
+
+        </div>
+    </div>
     <?php else: ?>
             <h3 class="text-center fs-1 w-100 px-3 mx-auto py-3" data-aos="fade-down" data-aos-duration="1000"><?php echo htmlspecialchars($content['header3']  ?? 'PTAS: REVOLUTIONIZING RIDES AND REDEFINING THE TRICYCLE INDUSTRY'); ?></h3>
             <div class="d-flex flex-column flex-lg-row align-items-center gap-4 px-3">
