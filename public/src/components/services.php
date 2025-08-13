@@ -66,7 +66,10 @@ while ($row = $result->fetch_assoc()) {
                 <div class="modal-body">
                     <form id="all-form" method="POST" action="backend/savecms.php" class="text-center">
                         <img src="../main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'services_image.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="service_image">
-                        <input type="file" name="service_image" class="form-control" accept="image/*">
+                        <div class="upload-box uploadBox">
+                            <input type="file" class="form-control mb-2 cms-image-input fileInput" data-cms-key="service_image" accept="image/*">
+                            <p>Click or drag a file here to upload</p>
+                        </div>
                     </form>
                 </div>
                 </div>

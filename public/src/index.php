@@ -151,6 +151,41 @@
             });
         });
     });
+
+    const uploadBoxes = document.querySelectorAll(".uploadBox");
+    const fileInputs = document.querySelectorAll(".fileInput");
+
+    uploadBoxes.forEach((box, index) => {
+      const input = fileInputs[index]; // Link each box to its file input
+
+      // Click to open file dialog
+      box.addEventListener("click", () => input.click());
+
+      // Highlight on drag
+      box.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        box.classList.add("dragover");
+      });
+
+      box.addEventListener("dragleave", () => {
+        box.classList.remove("dragover");
+      });
+
+      // Handle dropped files
+      box.addEventListener("drop", (e) => {
+        e.preventDefault();
+        box.classList.remove("dragover");
+
+        if (e.dataTransfer.files.length) {
+          input.files = e.dataTransfer.files;
+        }
+      });
+
+      // Handle normal file selection
+      input.addEventListener("change", () => {
+        // No alert — just keeps the file in the input
+      });
+    });
   </script>
 </body>
 </html>

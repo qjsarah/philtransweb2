@@ -59,7 +59,10 @@ while ($row = $result->fetch_assoc()) {
             <div class="modal-body">
               <form id="header1-form" method="POST" action="backend/savecms.php" class="text-center">
                   <img src="../main/images/download_section/<?php echo htmlspecialchars($content['phone_img'] ?? 'Download_imgs.png')?>" alt="phone" class="img-fluid w-50 current-cms-img mx-auto" data-cms-key="phone_img">
-                  <input type="file" class="form-control mb-2 cms-image-input" data-cms-key="phone_img" accept="image/*">
+                  <div class="upload-box uploadBox">
+                    <input type="file" class="cms-image-input fileInput" data-cms-key="phone_img " accept="image/*">
+                    <p>Click or drag a file here to upload</p>
+                  </div>
               </form>
             </div>
           </div>
@@ -80,7 +83,7 @@ while ($row = $result->fetch_assoc()) {
       <img src="../../public/main/images/download_section/google.png" alt="App Store" class="img-fluid mx-2" data-aos="fade-left" data-aos-duration="1500">
     </div>
     <div class="download_3_mobile position-relative" data-aos="fade-up" data-aos-duration="1500">
-      <img src="../../public/main/images/download_section/Download_imgs.png" class="d-block mx-auto img-fluid w-50" alt="Download Image" >
+      <img src="../../public/main/images/download_section/<?php echo htmlspecialchars($content['phone_img'] ?? 'Download_imgs.png')?>" class="d-block mx-auto img-fluid w-50 current-cms-img" alt="Download Image" data-cms-key="phone_img">
     </div>
   </section>
 

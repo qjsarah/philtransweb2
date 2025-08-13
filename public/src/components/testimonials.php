@@ -44,7 +44,7 @@ while ($row = $result->fetch_assoc()) {
                 <h4 class="text-light" data-aos="fade-right" data-aos-duration="1500"><?php echo htmlspecialchars($content['test_text'] ?? 'What our Client Says'); ?></h4>
                 <h4 class="text-warning display-4 fw-bold" data-aos="fade-right" data-aos-duration="1500"><?php echo htmlspecialchars($content['test_title'] ?? 'TESTIMONIAL'); ?></h4>     
             <div>
-            <img src="../../public/main/images/testimonial_section/<?php echo htmlspecialchars($content['testimonial_image'] ?? 'testimonial_image.png'); ?>" alt="" class="testimonial-img img-fluid" data-aos="fade-up" data-aos-duration="1000">
+            <img src="../../public/main/images/testimonial_section/<?php echo htmlspecialchars($content['test_img'] ?? 'testimonial_image.png'); ?>" alt="" class="testimonial-img img-fluid" data-aos="fade-up" data-aos-duration="1000">
         </div>
     </section>
     <div class="mt-5">
@@ -80,8 +80,11 @@ while ($row = $result->fetch_assoc()) {
             </div>
             <div class="modal-body">
                 <form id="all-form" method="POST" action="backend/savecms.php" class="text-center">
-                    <img src="../main/images/testimonial_section/<?php echo htmlspecialchars($content['test_img'] ?? 'testimonial_image.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="testimonial_image">
-                    <input type="file" name="service_image" class="form-control" accept="image/*">
+                    <img src="../main/images/testimonial_section/<?php echo htmlspecialchars($content['test_img'] ?? 'testimonial_image.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="test_img">
+                    <div class="upload-box uploadBox">
+                        <input type="file" class="form-control mb-2 cms-image-input fileInput" data-cms-key="test_img" accept="image/*">
+                        <p>Click or drag a file here to upload</p>
+                    </div>
                 </form>
             </div>
             </div>
