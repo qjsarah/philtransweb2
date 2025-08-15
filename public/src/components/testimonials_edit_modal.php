@@ -1,6 +1,6 @@
 <!-- Edit Card Modal -->
 <div class="modal fade" id="editTestimonial" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable"">
     <form id="editCardForm" method="POST" action="backend/update_testimonial.php">
       <div class="modal-content">
         <div class="modal-header">

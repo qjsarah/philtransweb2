@@ -222,7 +222,6 @@ while ($row = $result->fetch_assoc()) {
       document.getElementById('edit-name').value = name;
       document.getElementById('edit-roles').value = roles;
       document.getElementById('edit-rating').value = stars;
-
       new bootstrap.Modal(document.getElementById('editTestimonial')).show();
     });
   });

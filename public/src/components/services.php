@@ -151,7 +151,7 @@ while ($row = $result->fetch_assoc()) {
                                     </button>
                                     <form method="POST" action="backend/delete_card.php" class="d-inline">
                                         <input type="hidden" name="id" value="<?php echo $card['id']; ?>">
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this card?');">
+                                        <button type="submit" class="btn btn-sm btn-danger">
                                             Delete
                                         </button>
                                     </form>
@@ -160,18 +160,21 @@ while ($row = $result->fetch_assoc()) {
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-
-                <!-- Add New Card -->
-                <h6>Add New Card</h6>
-                <form method="POST" action="backend/add_card.php">
-                    <div class="mb-3">
-                        <input type="text" name="title" class="form-control" placeholder="Card Title" required>
-                    </div>
-                    <div class="mb-3">
-                        <textarea name="content" class="form-control" placeholder="Card Content" rows="3" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add Card</button>
-                </form>
+                
+                <div class="text-center">
+                    <button id="showAddCardForm" class="btn btn-success">
+                        Add New Card
+                    </button>
+                </div>
+                <div id="addCardForm" style="display: none;">
+                    <hr>
+                    <h5>Add New Card</h5>
+                    <form action="backend/add_card.php" method="POST">
+                        <input type="text" name="title" class="form-control mb-2" placeholder="Card Title" required>
+                        <textarea name="content" class="form-control mb-2" rows="3" placeholder="Card Description" required></textarea>
+                        <button class="btn btn-primary" type="submit">Add Card</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -211,5 +214,9 @@ document.querySelectorAll('.editCardBtn').forEach(btn => {
         document.getElementById('editCardContent').value = this.dataset.content;
         new bootstrap.Modal(document.getElementById('editCardModal')).show();
     });
+});
+document.getElementById('showAddCardForm').addEventListener('click', function () {
+    const form = document.getElementById('addCardForm');
+    form.style.display = (form.style.display === 'none') ? 'block' : 'none';
 });
 </script>

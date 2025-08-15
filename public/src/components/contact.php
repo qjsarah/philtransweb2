@@ -153,7 +153,7 @@ while ($row = $result->fetch_assoc()) {
               <label class="fw-bold">Phone Image</label>
               <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['phone4_img'] ?? 'contact_img.png')?>" class="img-fluid w-50 mb-3">
               <div class="upload-box uploadBox">
-                <input type="file" class="fileInput" name="phone4_img" accept="image/*">
+                <input type="file" class="fileInput cms-image-input" data-cms-key="phone4_img" name="phone4_img" accept="image/*">
                 <p>Click or drag a file here to upload</p>
               </div>
             </div>
@@ -163,7 +163,7 @@ while ($row = $result->fetch_assoc()) {
               <label class="fw-bold">Contact Icon</label>
               <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['contact_img'] ?? 'message_imgs.png')?>" class="img-fluid w-25 mb-3">
               <div class="upload-box uploadBox">
-                <input type="file" class="fileInput" name="contact_img" accept="image/*">
+                <input type="file" class="fileInput cms-image-input" data-cms-key="contact_img" name="contact_img" accept="image/*">
                 <p>Click or drag a file here to upload</p>
               </div>
             </div>
@@ -173,7 +173,7 @@ while ($row = $result->fetch_assoc()) {
               <label class="fw-bold">Web Icon</label>
               <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['web_img'] ?? 'web.png')?>" class="img-fluid w-25 mb-3">
               <div class="upload-box uploadBox">
-                <input type="file" class="fileInput" name="web_img" accept="image/*">
+                <input type="file" class="fileInput cms-image-input" data-cms-key="web_img" name="web_img" accept="image/*">
                 <p>Click or drag a file here to upload</p>
               </div>
             </div>
@@ -183,7 +183,7 @@ while ($row = $result->fetch_assoc()) {
               <label class="fw-bold">Location Icon</label>
               <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['location_img'] ?? 'location.png')?>" class="img-fluid w-25 mb-3">
               <div class="upload-box uploadBox">
-                <input type="file" class="fileInput" name="location_img" accept="image/*">
+                <input type="file" class="fileInput cms-image-input" data-cms-key="location_img" name="location_img" accept="image/*">
                 <p>Click or drag a file here to upload</p>
               </div>
             </div>
