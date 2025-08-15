@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-    if (isset($_SESSION["user_id"])) {
-        header('Location: /philtransweb2/public/src/index.php');
-        exit();
-    }
+if (isset($_SESSION["user_id"])) {
+    header('Location: /philtransweb2/public/src/index.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,27 +22,45 @@ session_start();
 <body class="text-white" style="background-color: #000066;">
     <div class="container d-flex align-items-center justify-content-center min-vh-100">
         <div class="row w-100 justify-content-center"
-            style="max-width: 1000px; height: 500px; background-color: #ffffff; border-radius: 20px; box-shadow: 0 0 20px #000000;">
+            style="max-width: 1000px; height: 500px; background-color: #ffffff;
+                   border-radius: 20px; box-shadow: 0 0 20px #000000;
+                   border: 3px solid #000066;"> <!-- Border matches input boxes -->
             
             <!-- Left: Login Form -->
             <div class="col-md-6 d-flex flex-column justify-content-center px-4 py-5">
-                <h2 class="text-center mb-4 fw-semibold" style="color:#000066;">ADMIN LOGIN</h2>
+                <h2 class="text-center mb-5 fw-semibold" style="color:#000066;">ADMIN</h2>
                 <form id="login-form" class="w-100">
-                    <div class="mb-4">
-                        <label for="email" class="form-label" style="color: #000066;">EMAIL</label>
-                        <input type="email" class="form-control"
-                            style="background-color: #ffffff; border: none; border: 3px solid #000066;"
-                            id="email" placeholder="Enter your email">
+                    
+                    <!-- Email with icon -->
+                    <div class="mb-4" style="position: relative;">
+                        <div style="position: relative;">
+                            <i class="bi bi-envelope-fill"
+                                style="position: absolute; top: 50%; left: 13px; transform: translateY(-50%); 
+                                       color: #000066; font-size: 25px;"></i>
+                            <div style="position: absolute; top: 50%; left: 48px; transform: translateY(-50%);
+                                        height: 60%; width: 1px; background-color: #000066;"></div>
+                            <input type="email" class="form-control"
+                                style="background-color: #ffffff; border: 3px solid #000066;
+                                       padding-left: 55px; height: 50px; font-size: 16px;"
+                                id="email" placeholder="Email">
+                        </div>
                     </div>
 
+                    <!-- Password with icon -->
                     <div class="mb-4">
-                        <label for="password" class="form-label" style="color: #000066;">PASSWORD</label>
                         <div style="position: relative;">
+                            <i class="bi bi-lock-fill"
+                                style="position: absolute; top: 50%; left: 13px; transform: translateY(-50%); 
+                                       color: #000066; font-size: 25px;"></i>
+                            <div style="position: absolute; top: 50%; left: 48px; transform: translateY(-50%);
+                                        height: 60%; width: 1px; background-color: #000066;"></div>
                             <input type="password"
                                 id="password"
                                 class="form-control"
-                                placeholder="Enter your password"
-                                style="background-color: #ffffff; border: none; border: 3px solid #000066; padding-right: 50px;">
+                                placeholder="Password"
+                                style="background-color: #ffffff; border: 3px solid #000066;
+                                       padding-left: 55px; padding-right: 50px;
+                                       height: 50px; font-size: 16px;">
                             
                             <i class="bi bi-eye-fill"
                                 id="togglePassword"
@@ -59,11 +77,12 @@ session_start();
                                         icon.classList.add('bi-eye-fill');
                                     }
                                 "
-                                style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);
-                                    font-size: 1.3rem; color: #000066; cursor: pointer;"></i>
+                                style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%);
+                                    font-size: 25px; color: #000066; cursor: pointer;"></i>
                         </div>
                     </div>
 
+                    <!-- Remember Me -->
                     <div class="form-check mb-4">
                         <input type="checkbox"
                             class="form-check-input"
@@ -76,15 +95,26 @@ session_start();
                         </label>
                     </div>
 
+                    <!-- Login Button -->
                     <button type="submit"
                         class="btn border-3 rounded-2 w-100 py-2"
-                        style="background-color: #ffffff; font-weight: bold; border: solid #000066; transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;"
+                        style="background-color: #000066; height: 50px; font-size: 16px;
+                               font-weight: bold; border: solid #000066; color: #ffffff; 
+                               transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;"
                         onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#000066'; this.style.boxShadow='5px 5px';"
-                        onmouseout="this.style.backgroundColor='#ffffff'; this.style.color='#000066'; this.style.boxShadow='none'">
+                        onmouseout="this.style.backgroundColor='#000066'; this.style.color='#ffffff'; this.style.boxShadow='none'">
                         LOG IN
                     </button>
+
                 </form>
-            </div>
+                
+          <div class="text-center mt-4">
+            <p style="color: #464646ff;">Don't have an account? <a href="register.php"
+                style="color: #000066; font-weight: 700;">Sign Up</a></p>
+          </div>
+            </div>  
+
+            
 
             <!-- Right: Logo/Image -->
             <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center p-4">
@@ -93,27 +123,13 @@ session_start();
                         class="img-fluid rounded-4 mb-3"
                         style="max-height: 80px;">
                     
-                    <img src="../../main/images/login_section/loginphiltrans.png" alt="Philtrans Image"
+                    <img src="../../main/images/login_section/logintrycicle.png" alt="Philtrans Image"
                         class="img-fluid rounded-4"
                         style="max-height: 500px;">
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById("password");
-            const button = event.target;
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                button.textContent = "Hide";
-            } else {
-                passwordInput.type = "password";
-                button.textContent = "Show";
-            }
-        }
-    </script>
 
     <script>
         document.querySelector('form').addEventListener('submit', function (event) {
@@ -125,50 +141,74 @@ session_start();
             $.ajax({
                 url: '../backend/checklogin.php',
                 method: 'POST',
-                data: {
-                    email: email,
-                    password: password,
-                },
+                data: { email: email, password: password },
                 dataType: 'json',
-                beforeSend: function () {
-                    $('#loading-indicator').show();
-                },
                 success: function (response) {
                     if (response.status === 'success') {
-                       Swal.fire({
-                        title: "Login Successfully!",
-                        html: `<p style="color: #868686ff;">${response.message}</p>`,
-                        //imageUrl: '../../main/images/register_section/jose.png', 
-                        //imageWidth: 200, 
-                        //imageHeight: 200, 
-                        icon: "success",
-                        background: "#000066",
-                        color: "#ffffff",
-                        text: response.message,
-                        showConfirmButton: false,
-                        timer: 1500,
-                        customClass: {
-                            popup: 'swal-custom-popup',   
-                            title: 'swal-custom-title',   
-                            confirmButton: 'swal-custom-button' 
-                        }
+                        Swal.fire({
+                            html: `
+                                <h2 class="swal-modern-title">Login Successfully!</h2>
+                                <p class="swal-modern-text">Redirecting...</p>
+                            `, 
+                            icon: null,
+                            showConfirmButton: false,
+                            timer: 1500,
+                            background: '#ffffff',
+                            color: '#000066',
+                            imageUrl: '../../main/images/login_section/logintrycicle.png', 
+                            imageHeight: 200,
+                            imageAlt: 'Top Image',
+                            customClass: {
+                                popup: 'swal-custom-popup',
+                                title: 'swal-modern-title',
+                                content: 'swal-modern-text',
+                            },
+                            didOpen: () => {
+                                const img = Swal.getImage();
+                                img.style.marginTop = '-110px'; 
+                                const separator = document.createElement('div');
+                                separator.style.height = '2px';
+                                separator.style.width = '100%';
+                                separator.style.backgroundColor = '#000066';
+                                separator.style.borderRadius = '5px';
+                                const popup = Swal.getPopup();
+                                popup.insertBefore(separator, popup.querySelector('.swal2-title'));
+                            }
                         }).then(() => {
                             window.location.href = '../index.php';
                         });
                     } else {
                         Swal.fire({
-                        icon: 'error',
-                        title: 'Invalid Email or Password!',
-                        html: '<p style="color: #868686ff;">Wrong Credentials...</p>',
-                        background: "#000066",
-                        color: "#ffffff",
-                        showConfirmButton: true,
-                        customClass: {
-                            popup: 'swal-custom-popup',   
-                            title: 'swal-custom-title',   
-                            confirmButton: 'swal-custom-button' 
+                            html: `
+                                <h2 class="swal-modern-title">Invalid Email or Password!</h2>
+                                <p class="swal-modern-text">Wrong Credentials...</p>
+                            `,
+                            icon: null,
+                            confirmButtonText: 'Try Again',
+                            background: '#ffffff',
+                            color: '#000066',
+                            buttonsStyling: false,
+                            imageUrl: '../../main/images/login_section/logintrycicle.png', 
+                            imageHeight: 200,
+                            imageAlt: 'Top Image',
+                            customClass: {
+                                popup: 'swal-custom-popup',
+                                title: 'swal-modern-title',
+                                content: 'swal-modern-text',
+                                confirmButton: 'swal-button-btn ok-btn',
+                            },
+                            didOpen: () => {
+                                const img = Swal.getImage();
+                                img.style.marginTop = '-110px'; 
+                                const separator = document.createElement('div');
+                                separator.style.height = '2px';
+                                separator.style.width = '100%';
+                                separator.style.backgroundColor = '#000066';
+                                separator.style.borderRadius = '5px';
+                                const popup = Swal.getPopup();
+                                popup.insertBefore(separator, popup.querySelector('.swal2-title'));
                             }
-                    });
+                        });
                     }
                 },
             });
@@ -177,5 +217,4 @@ session_start();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

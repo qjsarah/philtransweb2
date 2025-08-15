@@ -118,23 +118,70 @@
   <script>
     document.querySelectorAll('.save-button').forEach(button => {
         button.addEventListener('click', function () {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Do you want to save your changes?",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, save it!',
-                cancelButtonText: 'Cancel',
-                confirmButtonColor: '#28a745',
-                cancelButtonColor: '#6c757d'
+          Swal.fire({
+           html: `
+                            <h2 class="swal-modern-title">Are you sure?</h2>
+                            <p class="swal-modern-text">Do you want to save your changes?</p>
+                        `,
+                        icon: null,
+                        showCancelButton: true,
+                        confirmButtonText: 'Save',
+                        cancelButtonText: 'Cancel',
+                        background: '#ffffff',
+                        color: '#000066',
+                        buttonsStyling: false,
+                        imageUrl: '../main/images/index_section/indextrycicle.png', 
+                        imageHeight: 200,
+                        imageAlt: 'Top Image',
+                        customClass: {
+                            popup: 'swal-custom-popup',
+                            title: 'swal-modern-title',
+                            content: 'swal-modern-text',
+                            confirmButton: 'swal-button-btn ok-btn',
+                            cancelButton: 'swal-button-btn cancel-btn',
+                        },
+                         didOpen: () => {
+                  const img = Swal.getImage();
+                  img.style.marginTop = '-110px'; 
+                  const separator = document.createElement('div');
+                  separator.style.height = '2px';
+                  separator.style.width = '100%';
+                  separator.style.backgroundColor = '#000066';
+                  separator.style.borderRadius = '5px';
+                  const popup = Swal.getPopup();
+                  popup.insertBefore(separator, popup.querySelector('.swal2-title'));
+              }
             }).then((result) => {
                 if (result.isConfirmed) {
-                  swal.fire({
-                    title: 'Saved!',
-                    text: 'Your changes have been saved successfully.',
-                    icon: 'success',  
-                    timer: 500,
-                    showConfirmButton: false,
+                   Swal.fire({
+                         html: `
+                            <h2 class="swal-modern-title">Saved Successfully!</h2>
+                            <p class="swal-modern-text">Your changes have been saved successfully.</p>
+                        `, 
+                        icon: null,
+                        showConfirmButton: false,
+                        timer: 1500,
+                        background: '#ffffff',
+                        color: '#000066',
+                        imageUrl: '../main/images/index_section/indextrycicle.png', 
+                        imageHeight: 200,
+                        imageAlt: 'Top Image',
+                        customClass: {
+                            popup: 'swal-custom-popup',
+                            title: 'swal-modern-title',
+                            content: 'swal-modern-text',
+                        },
+                        didOpen: () => {
+                        const img = Swal.getImage();
+                        img.style.marginTop = '-110px'; 
+                        const separator = document.createElement('div');
+                        separator.style.height = '2px';
+                        separator.style.width = '100%';
+                        separator.style.backgroundColor = '#000066';
+                        separator.style.borderRadius = '5px';
+                        const popup = Swal.getPopup();
+                        popup.insertBefore(separator, popup.querySelector('.swal2-title'));
+                        }
                   }).then(() => {
                     const form = button.closest('form'); // find the form this button belongs to
                     if (form) {

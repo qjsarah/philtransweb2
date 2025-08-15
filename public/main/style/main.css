@@ -12284,29 +12284,63 @@ footer {
 }
 
 .swal-custom-popup {
-  border: 3px solid #000000;
-  border-radius: 15px;
+  border: 5px solid #000066;
+  border-radius: 30px;
 }
 
-.swal-custom-title {
-  font-family: "Arial", sans-serif;
-  font-size: 30px;
+.swal-modern-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.swal-modern-text {
+  font-size: 1.5rem;
+  color: #8f8f8f;
+}
+
+.swal2-actions {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: 15px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.swal-button-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
   font-weight: bold;
+  border: 3px solid transparent;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, border 0.3s;
 }
 
-.swal-custom-button {
+.ok-btn {
   background-color: #000066;
   color: white;
-  margin-top: 0;
-  font-weight: bold;
-  border-radius: 10px;
-  border: 3px solid #ffffff;
-  font-size: 20px;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  border: 3px solid #000066;
 }
 
-.swal-custom-button:hover {
-  background-color: #000066;
-  color: #ffffff;
-  box-shadow: 5px 5px;
+.cancel-btn {
+  background-color: #ff0000;
+  color: white;
+  border: 3px solid #ff0000;
+}
+
+.ok-btn:hover {
+  background-color: #ffffff;
+  color: #000066;
+  box-shadow: 5px 5px #000066;
+  border: 3px solid #000066;
+}
+
+.cancel-btn:hover {
+  background-color: #ffffff;
+  color: #ff0000;
+  box-shadow: 5px 5px #ff0000;
+  border: 3px solid #ff0000;
 }/*# sourceMappingURL=main.css.map */
