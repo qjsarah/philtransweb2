@@ -17,11 +17,13 @@ while ($row = $result->fetch_assoc()) {
 }
 ?>
 <section class="contact text-white">
-<?php if (isset($_SESSION['user_id'])): ?>
-  <div class="text-center mb-5">
-          <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".contactContent">Edit</button>
-          <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".edit-contact-image">Edit Image</button>
-        </div>
+  <?php if (isset($_SESSION['user_id'])): ?>
+    <div class="text-center mb-5">
+      <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".contactContent">Edit</button>
+      <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".edit-contact-image">Edit Image</button>
+    </div>
+  <?php endif; ?>
+
   <div class="container py-5">
     <div class="row align-items-center g-4">
       <!-- Form Column -->
@@ -98,8 +100,8 @@ while ($row = $result->fetch_assoc()) {
         </div>
     </div>
   </div>
-
-  <!-- Modal -->
+</section>
+<!-- Modal -->
 <!-- Content Edit Modal -->
 <div class="modal fade contactContent" tabindex="-1">
   <div class="modal-dialog modal-lg">
@@ -191,84 +193,3 @@ while ($row = $result->fetch_assoc()) {
     </div>
   </div>
 </div>
-
-<?php else: ?>
-<div class="container py-5">
-    <div class="row align-items-center g-4">
-      <!-- Form Column -->
-      <div class="col-lg-6">
-        <h5 class="display-5 fw-bold" data-aos="fade-right" data-aos-duration="500"><?php echo htmlspecialchars($content['contact_title'] ?? "Get in Touch."); ?></h5>
-
-        <form class="mt-4" >
-          <!-- Name Field -->
-          <div class="mb-3" data-aos="fade-right" data-aos-duration="1000">
-            <input type="text" class="form-control" id="inputName" placeholder="Enter your name">
-          </div>
-
-          <!-- Email Field -->
-          <div class="mb-3" data-aos="fade-right" data-aos-duration="1000">
-            <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email">
-          </div>
-
-          <!-- Message Field -->
-          <div class="mb-4" data-aos="fade-right" data-aos-duration="1000">
-            <textarea class="form-control" id="inputMessage" rows="7" placeholder="Type your message here..."></textarea>
-          </div>
-
-          <!-- Submit Button -->
-          <div class="text-end">
-            <button type="submit" class="contact_button px-3 py-2 rounded text-white">
-              Send Message
-            </button>
-          </div>
-        </form>
-      </div>
-
-        <!-- Image Column -->
-        <div class="col-lg-6 text-center position-relative" data-aos="fade-up" data-aos-duration="2500">
-          <!-- Main Contact Image -->
-          <div class="position-relative d-inline-block w-100">
-            <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['phone4_img'] ?? 'contact_img.png')?>" class="img-fluid rounded current-cms-img" alt="Phone Image" data-cms-key="phone_img4">
-              <!-- Icon 1: Message -->
-              <div class="position-absolute d-flex align-items-center gap-3" style="top: 20%; left: 12%;" data-aos="fade-up" data-aos-duration="500">
-                <div class="icon-circle">
-                  <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['contact_img'] ?? 'message_imgs.png')?>" class="icon-img current-cms-img" alt="Mail Icon" data-cms-key="contact_img">
-                </div>
-                <div class="contact_nav d-flex flex-column text-start small text-white">
-                  <a href="" ><?php echo htmlspecialchars($content['email'] ?? "info@philtransinc.com"); ?></a>
-                  <a href=""><?php echo htmlspecialchars($content['number'] ?? "+63 917 501 0018"); ?></a>
-                </div>
-              </div>
-              <!-- Icon 2: Website -->
-              <div class="position-absolute d-flex align-items-center gap-3 mb-4" style="top: 38%; left: 12%;" data-aos="fade-up" data-aos-duration="1000">
-                <div class="icon-circle">
-                  <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['web_img'] ?? 'web.png')?>" class="icon-img current-cms-img" alt="Web Icon" data-cms-key="web_img">
-                </div>
-                <div class="contact_nav d-flex flex-column text-start small text-white">
-                          <a href="#about">About us</a>
-                          <a href="">Copyright</a>
-                          <a href="">Privacy Policy</a>
-                          <a href="">Terms and Condition</a>
-                          <a href="">FAQs</a>
-                </div>
-              </div>
-              <!-- Icon 3: Location -->
-              <div class="position-absolute d-flex align-items-center gap-3" style="top: 62%; left: 12%;" data-aos="fade-up" data-aos-duration="2000">
-              <!-- Icon -->
-              <div class="icon-circle">
-                <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['location_img'] ?? 'location.png')?>" class="icon-img w-75 current-cms-img" alt="Location Icon" data-cms-key="location_img">
-              </div>
-              <!-- Text aligned to icon center -->
-              <div class="contact_nav text-start small text-white d-flex align-items-center">
-                <p class="mb-0 w-75">
-                  <?php echo htmlspecialchars($content['location'] ?? "D-3 2F Plaza Victoria, Santo Rosario St., Sto Domingo, Angeles City 2009 Pampanga Philippines"); ?>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-  </div>
-<?php endif; ?>
-
-</section>

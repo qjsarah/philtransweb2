@@ -27,7 +27,6 @@ while ($row = $result->fetch_assoc()) {
 ?>
 
 <section class="pt-5" id="services-container">
-    <?php if (isset($_SESSION['user_id'])): ?>
         <div class="mt-5 position-relative">
             <img src="../../public/main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'services_image.png'); ?>" 
                  alt="Services Image" 
@@ -43,159 +42,140 @@ while ($row = $result->fetch_assoc()) {
                     <?php echo htmlspecialchars($content['service_title'] ?? "SERVICES"); ?>
                 </h4>
             </div>
-
-            <!-- Edit Button -->
-            <div class="position-absolute top-0 end-0 m-3">
-                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editServiceModal">
-                    Edit
-                </button>
-                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target=".edit-services-image">
-                    Edit Image
-                </button>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade edit-services-image" tabindex="-1">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Edit Content</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- Edit Button -->
+                <div class="position-absolute top-0 end-0 m-3">
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editServiceModal">
+                        Edit Service header
+                    </button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editServiceCard">
+                        Edit Service Cards
+                    </button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target=".edit-services-image">
+                        Edit Image
+                    </button>
                 </div>
-                <div class="modal-body">
-                    <form id="all-form" method="POST" action="backend/savecms.php" class="text-center">
-                        <img src="../main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'services_image.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="service_image">
-                        <div class="upload-box uploadBox">
-                            <input type="file" class="form-control mb-2 cms-image-input fileInput" data-cms-key="service_image" accept="image/*">
-                            <p>Click or drag a file here to upload</p>
-                        </div>
-                    </form>
-                </div>
-                </div>
-            </div>
-        </div>
-                                     
-        <div class="modal fade" id="editServiceModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Edit Service Section & Cards</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <?php endif; ?>
+            <!-- Logged-in user card display -->
+            <div class="container mt-5">
+                <?php foreach ($cards as $card): ?>
+                    <div class="service-card border border-primary p-5 mb-3 rounded-5 text-primary" 
+                        data-aos="fade-right" 
+                        data-aos-duration="1500">
+                        <h4 class="fw-bold service-head my-auto"><?php echo htmlspecialchars($card['title']); ?></h4>
+                        <p class="service-body mt-2"><?php echo nl2br(htmlspecialchars($card['content'])); ?></p> 
                     </div>
-                    <div class="modal-body">
-                        <!-- Edit Service Section -->
-                        <form method="POST" action="backend/savecms.php" enctype="multipart/form-data" class="mb-4">
-                            <div class="mb-3">
-                                <label class="form-label">Service Text</label>
-                                <textarea name="service_text" class="form-control" rows="2"><?php echo htmlspecialchars($content['service_text'] ?? "How it Works"); ?></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Service Title</label>
-                                <input type="text" name="service_title" class="form-control" value="<?php echo htmlspecialchars($content['service_title'] ?? "SERVICES"); ?>">
-                            </div>
-                            <div class="text-end">
-                                <button type="button" class="btn btn-success save-button">Save Section</button>
-                            </div>
-                        </form>
-
-                        <hr>
-
-                        <!-- Cards CRUD -->
-                        <h5 class="mb-3">Manage Service Cards</h5>
-                        <table class="table table-bordered">
-                            <thead class="table-primary">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Title</th>
-                                    <th>Content</th>
-                                    <th width="150">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($cards as $index => $card): ?>
-                                    <tr>
-                                        <td><?php echo $index + 1; ?></td>
-                                        <td><?php echo htmlspecialchars($card['title']); ?></td>
-                                        <td><?php echo nl2br(htmlspecialchars($card['content'])); ?></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-warning editCardBtn" 
-                                                data-id="<?php echo $card['id']; ?>"
-                                                data-title="<?php echo htmlspecialchars($card['title']); ?>"
-                                                data-content="<?php echo htmlspecialchars($card['content']); ?>">
-                                                Edit
-                                            </button>
-                                            <form method="POST" action="backend/delete_card.php" class="d-inline">
-                                                <input type="hidden" name="id" value="<?php echo $card['id']; ?>">
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this card?');">
-                                                    Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-
-                        <!-- Add New Card -->
-                        <h6>Add New Card</h6>
-                        <form method="POST" action="backend/add_card.php">
-                            <div class="mb-3">
-                                <input type="text" name="title" class="form-control" placeholder="Card Title" required>
-                            </div>
-                            <div class="mb-3">
-                                <textarea name="content" class="form-control" placeholder="Card Content" rows="3" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Add Card</button>
-                        </form>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
-
-        <!-- Logged-in user card display -->
-         <div class="container mt-5">
-            <?php foreach ($cards as $card): ?>
-                <div class="service-card border border-primary p-5 mb-3 rounded-5 text-primary" 
-                    data-aos="fade-right" 
-                    data-aos-duration="1500">
-                    <h4 class="fw-bold service-head my-auto"><?php echo htmlspecialchars($card['title']); ?></h4>
-                    <p class="service-body mt-2"><?php echo nl2br(htmlspecialchars($card['content'])); ?></p> 
-                </div>
-            <?php endforeach; ?>
-         </div>
-
-    <?php else: ?>
-        <!-- Guest card display -->
-         <div class="mt-5 position-relative">
-            <img src="../../public/main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'services_image.png'); ?>" 
-                 alt="Services Image" 
-                 class="service-img img-fluid"  
-                 data-aos="fade-right" 
-                 data-aos-duration="1500">
-            
-            <div class="bg-primary h-auto text-md-end text-center p-5 service">
-                <h4 class="text-light" data-aos="fade-up" data-aos-duration="1500">
-                    <?php echo htmlspecialchars($content['service_text'] ?? "How it Works"); ?>
-                </h4>
-                <h4 class="text-warning display-4 fw-bold" data-aos="fade-up" data-aos-duration="1500">
-                    <?php echo htmlspecialchars($content['service_title'] ?? "SERVICES"); ?>
-                </h4>
-            </div>
-        </div>
-        <div class="container mt-5">
-        <?php foreach ($cards as $card): ?>
-            <div class="service-card border border-primary p-5 mb-3 rounded-5 text-primary" 
-                 data-aos="fade-right" 
-                 data-aos-duration="1500">
-                <h4 class="fw-bold service-head my-auto"><?php echo htmlspecialchars($card['title']); ?></h4>
-                <p class="service-body mt-2"><?php echo nl2br(htmlspecialchars($card['content'])); ?></p> 
-            </div>
-        <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
 </section>
+<!-- Modal -->
+<div class="modal fade edit-services-image" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Edit Content</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="all-form" method="POST" action="backend/savecms.php" class="text-center">
+                <img src="../main/images/services_section/<?php echo htmlspecialchars($content['service_image'] ?? 'services_image.png')?>" alt="" class="current-cms-img img-fluid w-50" data-cms-key="service_image">
+                <div class="upload-box uploadBox">
+                    <input type="file" class="form-control mb-2 cms-image-input fileInput" data-cms-key="service_image" accept="image/*">
+                    <p>Click or drag a file here to upload</p>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Service Modal -->            
+<div class="modal fade" id="editServiceModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Service Section & Cards</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Edit Service Section -->
+                <form method="POST" action="backend/savecms.php" enctype="multipart/form-data" class="mb-4">
+                    <div class="mb-3">
+                        <label class="form-label">Service Text</label>
+                        <textarea name="service_text" class="form-control" rows="2"><?php echo htmlspecialchars($content['service_text'] ?? "How it Works"); ?></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Service Title</label>
+                        <input type="text" name="service_title" class="form-control" value="<?php echo htmlspecialchars($content['service_title'] ?? "SERVICES"); ?>">
+                    </div>
+                    <div class="text-end">
+                        <button type="button" class="btn btn-success save-button">Save Section</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Service  Card Modal -->      
+<div class="modal fade" id="editServiceCard" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Service Section & Cards</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Cards CRUD -->
+                <h5 class="mb-3">Manage Service Cards</h5>
+                <table class="table table-bordered">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th width="150">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($cards as $index => $card): ?>
+                            <tr>
+                                <td><?php echo $index + 1; ?></td>
+                                <td><?php echo htmlspecialchars($card['title']); ?></td>
+                                <td><?php echo nl2br(htmlspecialchars($card['content'])); ?></td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning editCardBtn" 
+                                        data-id="<?php echo $card['id']; ?>"
+                                        data-title="<?php echo htmlspecialchars($card['title']); ?>"
+                                        data-content="<?php echo htmlspecialchars($card['content']); ?>">
+                                        Edit
+                                    </button>
+                                    <form method="POST" action="backend/delete_card.php" class="d-inline">
+                                        <input type="hidden" name="id" value="<?php echo $card['id']; ?>">
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this card?');">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
 
+                <!-- Add New Card -->
+                <h6>Add New Card</h6>
+                <form method="POST" action="backend/add_card.php">
+                    <div class="mb-3">
+                        <input type="text" name="title" class="form-control" placeholder="Card Title" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="content" class="form-control" placeholder="Card Content" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Card</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Card Editing Modal -->
 <div class="modal fade" id="editCardModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
