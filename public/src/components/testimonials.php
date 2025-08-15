@@ -25,20 +25,17 @@ while ($row = $result->fetch_assoc()) {
 
 ?>
 <div class="vh-100" data-aos="fade-right" data-aos-duration="1500">
-<?php if (isset($_SESSION['user_id'])): ?>
     <div id="testimonial" class=""></div>
-<?php endif; ?>
-
 </div>
 <script >
     const testimonialDiv = document.getElementById('testimonial');
     testimonialDiv.innerHTML = `
-    
     <section class="pt-5"> 
         <div class="mt-5 position-relative" data-aos="fade-right" data-aos-duration="1500">
             <div class="bg-primary h-auto text-lg-start  testimonial-header p-5">
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <button type="button" class="btn btn-warning " onclick="toggleEditAll(this)" data-modal-target=".testimonialContent">Edit</button>
+                    <button type="button" class="btn btn-warning " onclick="toggleEditAll(this)" data-modal-target=".testimonialContent">Edit Testimonial Header</button>
+                    <button type="button" class="btn btn-warning " onclick="toggleEditAll(this)" data-modal-target=".testimonialCardContent">Edit Testimonial Cards</button>
                     <button type="button" class="btn btn-warning " onclick="toggleEditAll(this)" data-modal-target=".edit-testimonial-image">Edit Image</button>
                 <?php endif; ?>
                 <h4 class="text-light" data-aos="fade-right" data-aos-duration="1500"><?php echo htmlspecialchars($content['test_text'] ?? 'What our Client Says'); ?></h4>
@@ -71,6 +68,10 @@ while ($row = $result->fetch_assoc()) {
         <?php endforeach; ?>
         </div>
     </div>
+    <section id="modal-section"></section>
+        `;
+    const modalSection = document.getElementById('modal-section');
+    modalSection.innerHTML = `
     <div class="modal fade edit-testimonial-image" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
@@ -105,8 +106,19 @@ while ($row = $result->fetch_assoc()) {
                             <button type="button" class="btn btn-success mb-2 save-button">Save Section</button>
                         </div>
                     </form>
-                    <br><hr>
-                    <!--INSERT TESTIMONIAL CARDS CRUD HERE-->
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade testimonialCardContent">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit Content</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                     <h5 class="mt-4">Testimonial Cards</h5>
                     <table class="table table-bordered table-striped">
                         <thead>
@@ -171,7 +183,7 @@ while ($row = $result->fetch_assoc()) {
             </div>
         </div>
     </div>
-        `;
+    `;
     $('.owl-carousel').owlCarousel({
         rtl: false,
         loop: true,
@@ -205,14 +217,11 @@ while ($row = $result->fetch_assoc()) {
       const roles = btn.dataset.role;
       const stars = btn.dataset.stars;
 
-
-
       document.getElementById('edit-id-testimonial').value = id;
       document.getElementById('edit-content-testimonial').value = content;
       document.getElementById('edit-name').value = name;
       document.getElementById('edit-roles').value = roles;
       document.getElementById('edit-rating').value = stars;
-
       new bootstrap.Modal(document.getElementById('editTestimonial')).show();
     });
   });

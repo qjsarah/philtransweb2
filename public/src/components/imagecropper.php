@@ -1,5 +1,4 @@
 <!-- Cropper Modal -->
-<?php?>
 <head>
   <link rel="stylesheet" href="../../../public/main/style/main.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet" />
