@@ -16,7 +16,10 @@ const imageBase64 = sessionStorage.getItem('tempImage');
     ads5: {width: 513, height: 484},
     ads6: {width: 513, height: 484},
     ads3: { width: 666, height: 182 },
-    ads4: { width: 666, height: 182 },
+    phone4_img: { width: 747, height: 822 },
+    location_img: { width: 46, height: 63 },
+    contact_img: { width: 61, height: 45 },
+    web_img: { width: 75, height: 80 }
   };
   if (!imageBase64 || !cmsKey || !cropSizes[cmsKey]) {
     alert("Missing image or CMS key.");

@@ -72,7 +72,7 @@ foreach ($fields as $field) {
             $stmt->close();
             $redirectSection = '#contact';
         }
-        if (in_array($field, ['contact_title', 'email', 'number', 'loc', 'phone4_img', 'location_img', 'contact_img', 'web_img'])) {
+        if (in_array($field, ['contact_title', 'email', 'number', 'location', 'phone4_img', 'location_img', 'contact_img', 'web_img'])) {
             $stmt = $conn->prepare("UPDATE contact SET content = ? WHERE key_name = ?");
             $stmt->bind_param("ss", $content, $field);
             $stmt->execute();
@@ -361,6 +361,48 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['ads1', 'ads2', 'ad
 
             if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
                 $stmt = $conn->prepare("UPDATE testimonial SET content = ? WHERE key_name = ?");
+                $stmt->bind_param("ss", $dbPath, $cmsKey);
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+    }
+}
+
+// Contact Section
+if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['phone4_img', 'location_img', 'contact_img', 'web_img'])) {
+    $cmsKey = $_POST['cms_key'];
+
+    if (isset($_FILES['cms_image']) && $_FILES['cms_image']['error'] === UPLOAD_ERR_OK) {
+       $allowedKeys = [
+        'phone4_img' => ['dir' => '../../main/images/contact_section/', 'path' => ''],
+        'location_img' => ['dir' => '../../main/images/contact_section/', 'path' => ''],
+        'contact_img' => ['dir' => '../../main/images/contact_section/', 'path' => ''],
+        'web_img' => ['dir' => '../../main/images/contact_section/', 'path' => ''],
+        ];
+        
+
+        if (!array_key_exists($cmsKey, $allowedKeys)) {
+            http_response_code(400);
+            exit('Invalid CMS key.');
+        }
+
+        $uploadDir = $allowedKeys[$cmsKey]['dir'];
+        $relativePath = $allowedKeys[$cmsKey]['path'];
+
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        $maxSize = 2 * 1024 * 1024; // 2MB
+
+        $fileType = $_FILES['cms_image']['type'];
+        $fileSize = $_FILES['cms_image']['size'];
+
+        if (in_array($fileType, $allowedTypes) && $fileSize <= $maxSize) {
+            $filename = time() . '_' . basename($_FILES['cms_image']['name']);
+            $targetPath = $uploadDir . $filename;
+            $dbPath = $relativePath . $filename;
+
+            if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+                $stmt = $conn->prepare("UPDATE contact SET content = ? WHERE key_name = ?");
                 $stmt->bind_param("ss", $dbPath, $cmsKey);
                 $stmt->execute();
                 $stmt->close();

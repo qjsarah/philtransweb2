@@ -1,7 +1,7 @@
 <?php
 include 'backend/config.php'; 
 
-$keys = ['contact_title', 'email', 'number', 'loc', 'phone4_img', 'location_img', 'contact_img', 'web_img'];
+$keys = ['contact_title', 'email', 'number', 'location', 'phone4_img', 'location_img', 'contact_img', 'web_img'];
 $placeholders = implode(',', array_fill(0, count($keys), '?'));
 
 $sql = "SELECT key_name, content FROM contact WHERE key_name IN ($placeholders)";
@@ -59,7 +59,7 @@ while ($row = $result->fetch_assoc()) {
         <div class="col-lg-6 text-center position-relative" data-aos="fade-up" data-aos-duration="2500">
           <!-- Main Contact Image -->
           <div class="position-relative d-inline-block w-100">
-            <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['phone4_img'] ?? 'contact_img.png')?>" class="img-fluid rounded current-cms-img" alt="Phone Image" data-cms-key="phone_img4">
+            <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['phone4_img'] ?? 'contact_img.png')?>" class="img-fluid rounded current-cms-img" alt="Phone Image" data-cms-key="phone4_img">
               <!-- Icon 1: Message -->
               <div class="position-absolute d-flex align-items-center gap-3" style="top: 20%; left: 12%;" data-aos="fade-up" data-aos-duration="500">
                 <div class="icon-circle">
@@ -126,7 +126,7 @@ while ($row = $result->fetch_assoc()) {
 
           <!-- Location -->
           <label class="fw-bold">Location</label>
-          <textarea name="location" class="form-control mb-3" rows="3"><?php echo htmlspecialchars($content['loc'] ?? 'Your location address here...'); ?></textarea>
+          <textarea name="location" class="form-control mb-3" rows="3"><?php echo htmlspecialchars($content['location'] ?? 'Your location address here...'); ?></textarea>
           <div class="modal-footer">
             <button type="button" form="contact-content-form" class="save-button btn btn-success">Save</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -151,7 +151,7 @@ while ($row = $result->fetch_assoc()) {
             <!-- Phone Image -->
             <div class="col-md-6 text-center">
               <label class="fw-bold">Phone Image</label>
-              <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['phone4_img'] ?? 'contact_img.png')?>" class="img-fluid w-50 mb-3">
+              <img src="../../public/main/images/contact_section/<?php echo htmlspecialchars($content['phone4_img'] ?? 'contact_img.png')?>" class="img-fluid w-50 mb-3 current-cms-img" alt="Phone Image" data-cms-key="phone4_img">
               <div class="upload-box uploadBox">
                 <input type="file" class="fileInput cms-image-input" data-cms-key="phone4_img" name="phone4_img" accept="image/*">
                 <p>Click or drag a file here to upload</p>
