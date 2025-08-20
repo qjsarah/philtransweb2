@@ -2,6 +2,51 @@
   $primary: #000066,
   $secondary: #BF0D3D
 );
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 .mobile {
   display: none;
 }
@@ -192,7 +237,7 @@
   }
 
   .ads{
-    padding-top: 35%;
+    padding-top: 5%;
   }
 
 }
@@ -294,14 +339,36 @@
     cursor: pointer;
     transition: border-color 0.3s ease;
   }
+
   .upload-box.dragover {
     border-color: #007bff;
     background-color: #f0f8ff;
   }
+
   .upload-box input {
     display: none;
   }
 
+/* Target screens between 576px and 785px */
+@media (min-width: 576px) and (max-width: 785px) {
+    .download_section {
+        height: 85vh!important;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 320px) and (max-width:  560px) {
+    .download_section {
+        height: auto !important; 
+        border-radius: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .download_3_mobile img{
+      width: 50% !important;
+       position: static !important;
+    }
+}
 
 @media (max-width: 768px) {
   .contact_nav p{
@@ -325,6 +392,10 @@ footer{
 
 .download_section {
   padding-bottom: 90px;
+  background-color: #000066;
+  max-height: 100vh; 
+  border-radius: 0 0 70% 70%;
+  margin-bottom: 15% !important;
 }
 
 

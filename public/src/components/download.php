@@ -16,25 +16,40 @@ while ($row = $result->fetch_assoc()) {
     $content[$row['key_name']] = $row['content'];
 }
 ?>
-<section class="download_section pb-5 mb-5" style="background-color: #000066; height: 100vh; border-radius: 0 0 60% 60%;"data-aos="fade-down" data-aos-duration="500">
+<section class="download_section pb-5 mb-5" data-aos="fade-down" data-aos-duration="500">
   <?php if (isset($_SESSION['user_id'])): ?>
-    <div class="text-center">
-       <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".editContentModal">Edit</button>
-       <button type="button" class="btn btn-warning mt-3" onclick="toggleEditAll(this)" data-modal-target=".edit-download-image">Edit Image</button>
+    <div class="pt-3 d-flex gap-3 justify-content-center ">
+       <button type="button" class="contact_button w-auto px-3 py-2 rounded text-white" onclick="toggleEditAll(this)" data-modal-target=".editContentModal">Edit Contents</button>
+       
     </div>
   <?php endif; ?>
   <div class="text-center text-white py-2">
-    <h1 class="fs-1" data-aos="fade-down" data-aos-duration="1000"><?php echo htmlspecialchars($content['header1']  ?? 'DOWNLOAD OUR APP NOW!'); ?></h1>
-    <p class="w-75 w-md-75 w-lg-50 mx-auto fs-4 pt-2" data-aos="fade-down" data-aos-duration="1500">
+    <h1 class="fs-1 py-3 fw-bold " data-aos="fade-down" data-aos-duration="1000"><?php echo htmlspecialchars($content['header1']  ?? 'DOWNLOAD OUR APP NOW!'); ?></h1>
+    <p class="w-75 w-md-75 w-lg-50 mx-auto fs-4 py-3" data-aos="fade-down" data-aos-duration="1500">
       <?php echo htmlspecialchars($content['paragraph1'] ?? "Download the Philippine Trans App System today and experience transportation like never before. Whether you're traveling for business or pleasure, our app makes getting around the Philippines easier, safer, and more convenient than ever before."); ?>
     </p>
   </div>
     <!-- Download Buttons -->
-    <div class="text-center mb-5">
-      <img src="../../public/main/images/download_section/apple.png" alt="Google Play" class="img-fluid mx-2" data-aos="fade-right" data-aos-duration="1500">
-      <img src="../../public/main/images/download_section/google.png" alt="App Store" class="img-fluid mx-2" data-aos="fade-left" data-aos-duration="1500">
+     <div class="text-center mb-5 d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
+  <img src="../../public/main/images/download_section/apple.png" 
+       alt="Apple Store" 
+       class="img-fluid" 
+       style="max-width: 180px;" 
+       data-aos="fade-right" data-aos-duration="1500">
+
+  <img src="../../public/main/images/download_section/google.png" 
+       alt="Google Play" 
+       class="img-fluid" 
+       style="max-width: 180px;" 
+       data-aos="fade-left" data-aos-duration="1500">
+</div>
+
+<?php if (isset($_SESSION['user_id'])): ?>
+    <div class="d-flex gap-3 pb-4 justify-content-center ">
+      <button type="button" class="contact_button w-auto px-3 py-2 rounded text-white" onclick="toggleEditAll(this)" data-modal-target=".edit-download-image">Change Image</button>
     </div>
-    <div class="download_3_mobile position-relative" data-aos="fade-up" data-aos-duration="1500">
+<?php endif?>
+    <div class="download_3_mobile position-relative pb-4" data-aos="fade-up" data-aos-duration="1500">
       <img src="../../public/main/images/download_section/<?php echo htmlspecialchars($content['phone_img'] ?? 'Download_imgs.png')?>" class="d-block mx-auto img-fluid w-50 current-cms-img" alt="Download Image" data-cms-key="phone_img">
     </div>
 </section>
@@ -80,41 +95,5 @@ while ($row = $result->fetch_assoc()) {
 </div>
 <!-- Viewport -->
 <style>
-@media (max-width: 1470px) {
-  .download_section {
-    border-radius: 0 0 30% 30% !important;
-    height: 50vh !important; /* allow it to expand */
-  }
-}
- @media (max-width: 990px) {
-  .download_section {
-    border-radius: 0 0 10% 10% !important;
-    height: 50vh !important; /* allow it to expand */
-    padding-bottom: 50px;
-  }
 
-  .download_section p {
-    width: 90% !important;
-    font-size: 1rem !important;
-  }
-
-  .download_section img.w-50 {
-    width: 100% !important;
-  }
-
-  .download_section .img-fluid.mx-2 {
-    max-width: 55% !important;
-    margin: 0.5rem !important;
-  }
-
-  .download_section h1 {
-    font-size: 1.75rem !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .download_section {
-    padding-bottom: 550px !important;
-  }
-}
 </style>
