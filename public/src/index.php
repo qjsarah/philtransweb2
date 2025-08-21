@@ -29,7 +29,7 @@
   </div>
   
   <!-- Download Section -->
-  <section class="download_section" id="download">
+  <section class="" id="download">
     <?php include 'components/download.php'; ?>
   </section>
 
@@ -85,6 +85,7 @@
   <!-- SCRIPT FOR AOS DO NOT REMOVE TO HEAD PLEASE -->
   <script src="../node_modules/aos/dist/aos.js"></script>
   <script>
+
     AOS.init();
       
   // For backdrop interference with modals
@@ -93,25 +94,25 @@
   });
 
   // Cropper
-  document.querySelectorAll('.cms-image-input').forEach(input => { //CROPPERRRR
-    input.addEventListener('change', function (e) {
-      const file = e.target.files[0];
-      if (!file) return;
+document.querySelectorAll('.cms-image-input').forEach(input => { //CROPPERRRR
+      input.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (!file) return;
 
-      const cmsKey = this.getAttribute('data-cms-key');
+        const cmsKey = this.getAttribute('data-cms-key');
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        // Save base64 image and cmsKey to sessionStorage
-        sessionStorage.setItem('tempImage', reader.result);
-        sessionStorage.setItem('cmsKey', cmsKey);
+        const reader = new FileReader();
+        reader.onload = () => {
+          // Save base64 image and cmsKey to sessionStorage
+          sessionStorage.setItem('tempImage', reader.result);
+          sessionStorage.setItem('cmsKey', cmsKey);
 
-        // Redirect to cropping page with cms_key in URL (optional, just for clarity)
-        window.location.href = `components/imagecropper.php?cms_key=${cmsKey}`;
-      };
-      reader.readAsDataURL(file);
+          // Redirect to cropping page with cms_key in URL (optional, just for clarity)
+          window.location.href = `components/imagecropper.php?cms_key=${cmsKey}`;
+        };
+        reader.readAsDataURL(file);
+      });
     });
-  });
   document.body.appendChild(document.getElementById('editTestimonial'));
   </script>
   <script src="../main/scripts/script.js"></script>
@@ -219,6 +220,9 @@
 
         if (e.dataTransfer.files.length) {
           input.files = e.dataTransfer.files;
+
+          const event = new Event('change');
+      input.dispatchEvent(event);
         }
       });
 

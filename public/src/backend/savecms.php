@@ -3,14 +3,14 @@ session_start();
 include 'config.php';
 
 // Text fields
-$fields = ['header1', 'paragraph1', 'apple_dl', 'google_dl', 'phone_img', 'header2', 'paragraph2', 'paragraph2_1', 'phone2_img', 'header3', 'paragraph3', 'paragraph3_1', 'tricycle_img', 'header3_1', 'mission_img', 'vision_img', 'mission_con', 'vision_con', 'phone3_img', 'service_title', 'services_bgcolor', 'service_text', 'service_image', 'test_text', 'test_title', 'test_img', 'ads1', 'ads2', 'ads3', 'ads4', 'ads5', 'ads6', 'contact_title', 'email', 'number', 'loc', 'phone4_img', 'location_img', 'contact_img', 'web_img', 'footer_copyright', 'footer_credits'];
+$fields = ['header1', 'paragraph1', 'apple_dl', 'google_dl', 'phone_img', 'header2', 'paragraph2', 'paragraph2_1', 'phone2_img', 'header3', 'paragraph3', 'paragraph3_1', 'tricycle_img', 'header3_1', 'mission_img', 'vision_img', 'mission_con', 'vision_con', 'phone3_img', 'service_title', 'services_bgcolor', 'service_text', 'service_image', 'test_text', 'test_title', 'test_img', 'ads1', 'ads2', 'ads3', 'ads4', 'ads5', 'ads6', 'contact_title', 'email', 'number', 'loc', 'phone4_img', 'location_img', 'contact_img', 'web_img', 'footer_copyright', 'footer_credits','download_bg_color','download_title_color','download_desc_color', 'intro_title_color','intro_desc_color', 'aboutus_title_color','aboutus_sub_color', 'aboutus_desc_color','mvision_bg_color','mission_font_color', 'vision_font_color' ];
 
 foreach ($fields as $field) {
     if (isset($_POST[$field])) {
         $content = $_POST[$field];
 
         // Decide which table and section to update based on $field
-        if (in_array($field, ['header1', 'paragraph1','phone_img', 'apple_dl', 'google_dl'])) {
+        if (in_array($field, ['header1', 'paragraph1','phone_img', 'apple_dl', 'google_dl','download_bg_color','download_title_color','download_desc_color'])) {
             $stmt = $conn->prepare("UPDATE download SET content = ? WHERE key_name = ?");
             $stmt->bind_param("ss", $content, $field);
             $stmt->execute();
@@ -18,14 +18,14 @@ foreach ($fields as $field) {
             $redirectSection = '#';
         }
 
-        if (in_array($field, ['header2', 'paragraph2', 'paragraph2_1', 'phone2_img'])) {
+        if (in_array($field, ['header2', 'paragraph2', 'paragraph2_1', 'phone2_img', 'intro_title_color','intro_desc_color'])) {
             $stmt = $conn->prepare("UPDATE intro SET content = ? WHERE key_name = ?");
             $stmt->bind_param("ss", $content, $field);
             $stmt->execute();
             $stmt->close();
             $redirectSection = '#intro';
         }
-        if (in_array($field, ['header3', 'paragraph3', 'paragraph3_1', 'tricycle_img', 'header3_1'])) {
+        if (in_array($field, ['header3', 'paragraph3', 'paragraph3_1', 'tricycle_img', 'header3_1', 'aboutus_title_color','aboutus_sub_color', 'aboutus_desc_color'])) {
             $stmt = $conn->prepare("UPDATE aboutus SET content = ? WHERE key_name = ?");
             $stmt->bind_param("ss", $content, $field);
             $stmt->execute();
@@ -33,7 +33,7 @@ foreach ($fields as $field) {
             $redirectSection = '#about';
         }
 
-        if (in_array($field, ['mission_img', 'vision_img', 'mission_con', 'vision_con', 'phone3_img'])) {
+        if (in_array($field, ['mission_img', 'vision_img', 'mission_con', 'vision_con', 'phone3_img', 'mvision_bg_color','mission_font_color', 'vision_font_color'])) {
             $stmt = $conn->prepare("UPDATE missionvision SET content = ? WHERE key_name = ?");
             $stmt->bind_param("ss", $content, $field);
             $stmt->execute();
@@ -64,6 +64,9 @@ foreach ($fields as $field) {
             $stmt->close();
             $redirectSection = '#testimonial';
         }
+
+
+
         if (in_array($field, ['contact_bg'])) {
             $content = $_POST[$field];
             $stmt = $conn->prepare("UPDATE cfs SET content = ? WHERE key_name = ?");
@@ -136,7 +139,7 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['phone2_img'])) {
 
     if (isset($_FILES['cms_image']) && $_FILES['cms_image']['error'] === UPLOAD_ERR_OK) {
        $allowedKeys = [
-        'phone2_img' => ['dir' => '../../main/images/download_section/', 'path' => '']
+        'phone2_img' => ['dir' => '../../main/images/intro_section/', 'path' => '']
         ];
         
 
@@ -360,7 +363,7 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['ads1', 'ads2', 'ad
             $dbPath = $relativePath . $filename;
 
             if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
-                $stmt = $conn->prepare("UPDATE testimonial SET content = ? WHERE key_name = ?");
+                $stmt = $conn->prepare("UPDATE ads_section SET content = ? WHERE key_name = ?");
                 $stmt->bind_param("ss", $dbPath, $cmsKey);
                 $stmt->execute();
                 $stmt->close();

@@ -12204,9 +12204,6 @@ table {
     top: -120px;
     right: 35%;
   }
-  .ads {
-    padding-top: 5%;
-  }
 }
 @media (max-width: 630px) {
   .service-img {
@@ -12227,9 +12224,6 @@ table {
     top: -120px;
     right: 25%;
   }
-  .ads {
-    padding-top: 25%;
-  }
 }
 @media (max-width: 320px) {
   .service-img {
@@ -12240,9 +12234,6 @@ table {
     top: -120px;
     right: 18%;
   }
-  .ads {
-    padding-top: 15%;
-  }
 }
 .contact {
   background-color: #000066;
@@ -12250,7 +12241,7 @@ table {
 
 .contact_button {
   transition: 0.3s;
-  background-color: #000066;
+  background-color: transparent;
   border-style: solid;
   border-color: white;
   border-width: thin;
@@ -12315,24 +12306,24 @@ table {
 /* Target screens between 576px and 785px */
 @media (min-width: 576px) and (max-width: 785px) {
   .download_section {
-    height: 85vh !important;
-    margin-bottom: 0;
+    height: 75vh !important;
+  }
+  .ads {
+    margin-top: 30% !important;
   }
 }
-@media (min-width: 320px) and (max-width: 560px) {
+/* Mobile override */
+/* Mobile override */
+@media (max-width: 570px) {
   .download_section {
-    height: auto !important;
     border-radius: 0 !important;
-    margin-bottom: 0 !important;
   }
   .download_3_mobile img {
-    width: 50% !important;
+    width: 45% !important;
     position: static !important;
   }
-}
-@media (max-width: 768px) {
-  .contact_nav p {
-    margin-top: 30px;
+  .download_app img {
+    width: 40% !important;
   }
 }
 @media (max-width: 438px) {
@@ -12343,15 +12334,21 @@ table {
     font-size: 8px;
   }
 }
+/* Mobile: stack columns, reverse order */
+@media (max-width: 768px) {
+  .intro-row {
+    display: flex;
+    flex-direction: column-reverse; /* swaps order */
+  }
+}
 footer {
   background-color: #000066;
 }
 
 .download_section {
   padding-bottom: 90px;
-  background-color: #000066;
+  border-radius: 0 0 50% 50%;
   max-height: 100vh;
-  border-radius: 0 0 70% 70%;
   margin-bottom: 15% !important;
 }
 

@@ -1,5 +1,6 @@
 <!-- Cropper Modal -->
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../../public/main/style/main.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet" />
 </head>
@@ -8,7 +9,7 @@
     <img id="cropperTarget" class="img-fluid">
   <br>
   <div class="text-end">
-    <button onclick="cropAndUpload()" class="btn btn-primary">Crop & Upload</button>
+    <button onclick="cropAndUpload()" id="cropUploadBtn" class="btn btn-primary">Crop & Upload</button>
     <button onclick="window.history.back()" class="btn btn-primary">Cancel</button>
   </div>
 </div>
