@@ -3,7 +3,7 @@ session_start();
 include 'config.php';
 
 // Text fields
-$fields = ['header1', 'paragraph1', 'apple_dl', 'google_dl', 'phone_img', 'header2', 'paragraph2', 'paragraph2_1', 'phone2_img', 'header3', 'paragraph3', 'paragraph3_1', 'tricycle_img', 'header3_1', 'mission_img', 'vision_img', 'mission_con', 'vision_con', 'phone3_img', 'service_title', 'services_bgcolor', 'service_text', 'service_image', 'test_text', 'test_title', 'test_img', 'ads1', 'ads2', 'ads3', 'ads4', 'ads5', 'ads6', 'contact_title', 'email', 'number', 'loc', 'phone4_img', 'location_img', 'contact_img', 'web_img', 'footer_copyright', 'footer_credits','download_bg_color','download_title_color','download_desc_color', 'intro_title_color','intro_desc_color', 'aboutus_title_color','aboutus_sub_color', 'aboutus_desc_color','mvision_bg_color','mission_font_color', 'vision_font_color' ];
+$fields = ['header1', 'paragraph1', 'apple_dl', 'google_dl', 'phone_img', 'header2', 'paragraph2', 'paragraph2_1', 'phone2_img', 'header3', 'paragraph3', 'paragraph3_1', 'tricycle_img', 'header3_1', 'mission_img', 'vision_img', 'mission_con', 'vision_con', 'phone3_img', 'service_title', 'services_bg_color', 'service_text', 'service_image', 'test_text', 'test_title', 'test_img', 'ads1', 'ads2', 'ads3', 'ads4', 'ads5', 'ads6', 'contact_title', 'email', 'number', 'loc', 'phone4_img', 'location_img', 'contact_img', 'web_img', 'footer_copyright', 'footer_credits','download_bg_color','download_title_color','download_desc_color', 'intro_title_color','intro_desc_color', 'aboutus_title_color','aboutus_sub_color', 'aboutus_desc_color','mvision_bg_color','mission_font_color', 'vision_font_color',  'services_title_color','services_desc_color', 'card_title_color', 'card_desc_color' ];
 
 foreach ($fields as $field) {
     if (isset($_POST[$field])) {
@@ -41,7 +41,7 @@ foreach ($fields as $field) {
             $redirectSection = '#missionvission';
         }
 
-        if (in_array($field, ['service_title', 'services_bgcolor', 'service_text', 'service_image'])) {
+        if (in_array($field, ['service_title', 'services_bg_color', 'service_text', 'service_image','services_title_color','services_desc_color', 'card_title_color', 'card_desc_color'])) {
             $stmt = $conn->prepare("UPDATE services SET content = ? WHERE key_name = ?");
             $stmt->bind_param("ss", $content, $field);
             $stmt->execute();

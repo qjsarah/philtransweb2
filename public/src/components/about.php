@@ -87,10 +87,10 @@ $descColor  = htmlspecialchars($content['aboutus_desc_color'] ?? '#1a1a1a');
 
             <!-- Editable Fields -->
              <div class="flex-grow-1 w-100">
-               <label for="header3" class="form-label fw-bold text-secondary ">Main Title:</label>
+               <label for="header3" class="form-label fw-bold text-secondary ">Title:</label>
               <textarea name="header3" class="form-control mb-3 border-dark" rows="3"><?php echo htmlspecialchars($content['header3'] ?? ""); ?></textarea>
 
-               <label for="header3_1" class="form-label fw-bold text-secondary">Title Right:</label>
+               <label for="header3_1" class="form-label fw-bold text-secondary">SubTitle:</label>
               <textarea name="header3_1" class="form-control mb-3 border-dark" rows="3"><?php echo htmlspecialchars($content['header3_1'] ?? "ABOUT US"); ?></textarea>
 
               <label for="paragraph3" class="form-label fw-bold text-secondary">Description Left:</label>
