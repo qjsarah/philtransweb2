@@ -52,9 +52,9 @@ while ($row = $result->fetch_assoc()) {
   </div>
 
     <?php if (isset($_SESSION['user_id'])): ?>
-    <div class="justify-content-center mb-3 d-flex gap-3 mt-4">
-      <button type="button" class="contact_button px-5 py-2 rounded text-white w-25 w-md-auto" onclick="toggleEditAll(this)" data-modal-target=".mvisionContent">Edit Contents</button>
-      <button type="button" class="contact_button px-5 py-2 rounded text-white w-25 w-md-auto" onclick="toggleEditAll(this)" data-modal-target=".edit-mv-images">Change Images</button>
+    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mb-2 mt-5 px-5">
+      <button type="button" class="contact_button px-5 py-2 rounded text-white w-100 w-sm-50" onclick="toggleEditAll(this)" data-modal-target=".mvisionContent">Edit Contents</button>
+      <button type="button" class="contact_button px-5 py-2 rounded text-white w-100 w-sm-50" onclick="toggleEditAll(this)" data-modal-target=".edit-mv-images">Change Images</button>
     </div>
   <?php endif; ?>
 

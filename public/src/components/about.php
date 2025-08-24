@@ -51,9 +51,9 @@ $descColor  = htmlspecialchars($content['aboutus_desc_color'] ?? '#1a1a1a');
 </section>
  <?php if (isset($_SESSION['user_id'])): ?> \
   <!-- EDIT BUTTONS -->
-    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mb-5">
-      <button type="button" class="contact_button rounded text-dark w-25 px-3 py-2 mt-2 border-dark" onclick="toggleEditAll(this)" data-modal-target=".aboutContent">Edit Content</button>
-      <button type="button" class="contact_button rounded text-dark w-25 px-3 py-2 mt-2 border-dark" onclick="toggleEditAll(this)" data-modal-target=".edit-about-image">Change Image</button>
+    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mb-5 px-5">
+      <button type="button" class="contact_button rounded text-dark w-100 w-sm-50 px-3 py-2 mt-2 border-dark" onclick="toggleEditAll(this)" data-modal-target=".aboutContent">Edit Content</button>
+      <button type="button" class="contact_button rounded text-dark w-100 w-sm-50 px-3 py-2 mt-2 border-dark" onclick="toggleEditAll(this)" data-modal-target=".edit-about-image">Change Image</button>
     </div>
   <?php endif; ?>
 <!-- Modal -->

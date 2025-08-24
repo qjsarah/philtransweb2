@@ -60,11 +60,11 @@ while ($row = $result->fetch_assoc()) {
             
             <?php if (isset($_SESSION['user_id'])): ?>
                 <!-- Edit Button -->
-                <div class="text-center mt-5 d-flex justify-content-center gap-4">
-                    <button type="button" class="contact_button w-25 px-3 py-2 mt-2 rounded text-dark border-dark" data-bs-toggle="modal" data-bs-target=".edit-services-image">
+                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mb-5 px-5">
+                    <button type="button" class="contact_button w-100 w-sm-50 px-3 py-2 mt-2 rounded text-dark border-dark" data-bs-toggle="modal" data-bs-target=".edit-services-image">
                         Change Image
                     </button>
-                    <button type="button" class="contact_button w-25 px-3 py-2 mt-2 rounded text-dark border-dark" data-bs-toggle="modal" data-bs-target="#editServiceModal">
+                    <button type="button" class="contact_button w-100 w-sm-50 px-3 py-2 mt-2 rounded text-dark border-dark" data-bs-toggle="modal" data-bs-target="#editServiceModal">
                         Edit Service header
                     </button>
                 </div>
