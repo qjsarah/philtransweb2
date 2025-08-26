@@ -234,54 +234,84 @@ while ($row = $result->fetch_assoc()) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <?php include 'testimonials_edit_modal.php'; ?>
-                    <div class="text-center">
-                        <button id="showAddTestimonialForm" class="btn btn-success">
+                
+                    <div class="text-center w-100">
+
+                        <button id="showAddTestimonialForm" class="btn services-card w-100 p-3 mx-auto d-block rounded my-3 text-dark fw-bold" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.27); transition: transform 0.2s ease, box-shadow 0.2s ease; background: none; border: 2px dashed #aaa;">
                             Add New Card
                         </button>
                     </div>
                     <hr>
-                    <div id="addTestimonialForm" style="display: none;">
-                        <h5>Add new testimonial</h5>
-                        <form action="backend/add_testimonial.php" method="POST">
-                            <textarea name="test_content" class="form-control mb-2" rows="3" placeholder="Testimonial Content" required></textarea>
-                            <input type="text" name="test_name" class="form-control mb-2" placeholder="Name" required>
-                            <input type="text" name="roles" class="form-control mb-2" placeholder="Role" required>
-                            <input type="number" max="5" name="stars" placeholder="5">
+                    <div id="addTestimonialForm" class="mb-5" style="display: none;">
+                        <h5 class="text-center mb-3">Add new testimonial</h5>
+
+                <?php include 'testimonials_edit_modal.php'; ?>
+
+                        <form action="backend/add_testimonial.php" method="POST" class="w-75 mx-auto">
+
+                            <label class="form-label fw-bold text-secondary mt-2">Testimonial Content:</label>
+                            <textarea name="test_content" class="form-control mb-2 border-dark" rows="3" placeholder="Testimonial Content" required></textarea>
+
+                            <label class="form-label fw-bold text-secondary mt-2">Testimonial Name:</label>
+                            <input type="text" name="test_name" class="form-control mb-2 border-dark" placeholder="Name" required>
+
+                            <label class="form-label fw-bold text-secondary mt-2">Testimonial Role:</label>
+                            <select name="roles" class="form-control mb-2" style="border-color: black;" required>
+                                <option value="">-- Select Role --</option>
+                                <option value="Driver">Driver</option>
+                                <option value="User">User</option>
+                            </select>
+
+                            <label class="form-label fw-bold text-secondary mt-2">Testimonial Rating:</label>
+                            <input type="number" max="5" class="form-control mb-2 border-dark" name="stars" placeholder="5">
                             <br>
                             
-                            <button class="btn btn-primary float-end" type="submit">Add Testimonial</button>
+                            <button class="btn contact_button px-5 py-2 rounded text-dark w-100 w-md-auto mt-3 border-dark" type="submit">Add Testimonial</button>
                         </form>
                     </div>
                 
-                            <?php foreach ($testimonials as $test): ?>
-                                    <?php echo htmlspecialchars($test['test_content']); ?>
-                                    <?php echo htmlspecialchars($test['test_name']); ?>
-                                    <?php echo htmlspecialchars($test['roles']); ?>
-                                    <?php echo htmlspecialchars($test['stars']); ?> stars
+                     <div class="container">
+  <div class="row g-4 justify-content-center">
+    <?php foreach ($testimonials as $test): ?>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="border border-dark text-center p-4 h-100 rounded" style="border-radius: 8px; display: flex; flex-direction: column; justify-content: space-between;">
+          
+          <!-- Testimonial Content -->
+          <p class="fst-italic mb-3" style="max-height: auto; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;">
+            "<?php echo htmlspecialchars($test['test_content']); ?>"
+          </p>
 
-                                    <td class="d-flex justify-content-between align-items-center gap-1">
-                                        <form action="backend/delete_testimonial.php" method="POST" class="d-inline">   
-                                            <input type="hidden" name="id" value="<?php echo $test['id']; ?>">
-                                            <button type="button" class="btn btn-danger my-auto delete-testimonial-btn" style="width:100px;">Delete</button>
-                                        </form>
-                                        <div class="d-flex">
-                                        <button class="btn btn-secondary edit-btn-testimonial" 
-                                            data-id="<?php echo $test['id']; ?>" 
-                                            data-content="<?php echo htmlspecialchars($test['test_content'], ENT_QUOTES); ?>"
-                                            data-name="<?php echo htmlspecialchars($test['test_name'], ENT_QUOTES); ?>"
-                                            data-role="<?php echo htmlspecialchars($test['roles'], ENT_QUOTES); ?>"
-                                            data-stars="<?php echo htmlspecialchars($test['stars'], ENT_QUOTES); ?>" style="width:100px;">
-                                            Edit
-                                        </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                
-                            <?php endforeach; ?>
-                       
+          <!-- Stars -->
+          <p class="text-warning fs-5 mb-2">
+            <?php echo str_repeat('★', (int)$test['stars']) . str_repeat('☆', 5 - (int)$test['stars']); ?>
+          </p>
 
-                    
+          <!-- Name + Role -->
+          <p class="fw-bold mb-0"  style="max-height: auto; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word;"><?php echo htmlspecialchars($test['test_name']); ?></p>
+          <p class="text-muted small mb-3"><?php echo htmlspecialchars($test['roles']); ?></p>
+
+          <!-- Buttons -->
+          <button class="contact_button px-4 py-2 rounded text-dark w-100 mb-2 edit-btn-testimonial" style="border-color: black;"
+              data-id="<?php echo $test['id']; ?>"
+              data-content="<?php echo htmlspecialchars($test['test_content'], ENT_QUOTES); ?>"
+              data-name="<?php echo htmlspecialchars($test['test_name'], ENT_QUOTES); ?>"
+              data-role="<?php echo htmlspecialchars($test['roles'], ENT_QUOTES); ?>"
+              data-stars="<?php echo htmlspecialchars($test['stars'], ENT_QUOTES); ?>">
+            Edit
+          </button>
+
+          <form action="backend/delete_testimonial.php" method="POST">
+            <input type="hidden" name="id" value="<?php echo $test['id']; ?>">
+            <button type="button" class="contact_button px-4 py-2 rounded text-dark w-100 delete-testimonial-btn" style="border-color: black;">
+              Delete
+            </button>
+          </form>
+
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</div>   
                 </div>
             </div>
         </div>

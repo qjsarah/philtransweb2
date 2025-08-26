@@ -12405,4 +12405,17 @@ footer {
   color: #ff0000;
   box-shadow: 5px 5px #ff0000;
   border: 3px solid #ff0000;
+}
+
+.services-card {
+  transition: 0.3s;
+  border-style: solid;
+  border-width: thin;
+}
+
+.services-card:hover {
+  box-shadow: 10px 10px;
+  transition: 0.3s;
+  border-style: solid;
+  border-color: white;
 }/*# sourceMappingURL=main.css.map */

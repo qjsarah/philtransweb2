@@ -461,3 +461,16 @@ footer{
 }
 
 
+
+.services-card {
+    transition: 0.3s;
+    border-style: solid;
+    border-width: thin;
+}
+
+.services-card:hover {
+    box-shadow: 10px 10px;
+    transition: 0.3s;
+    border-style: solid;
+    border-color: white;
+}
