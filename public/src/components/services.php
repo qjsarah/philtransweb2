@@ -252,12 +252,16 @@ while ($row = $result->fetch_assoc()) {
                         <button class="contact_button w-25 px-3 py-2 mt-3 rounded text-dark border border-dark d-block mx-auto" type="submit">Add Card</button>
                     </form>
                 </div>
+
                         <?php foreach ($cards as $index => $card): ?>
                                 <div class="services-card w-75 p-3 mx-auto d-block rounded my-3 text-dark  "
                             style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.27); transition: transform 0.2s ease, box-shadow 0.2s ease; background: none; border: none;">
+                            <h4>
                                 <?php echo htmlspecialchars($card['title']); ?>
+                            </h4>
+                            <h4>
                                 <?php echo nl2br(htmlspecialchars($card['content'])); ?>
-
+                            </h4>
 
 <form action="backend/delete_card.php" method="POST" class="delete-form">
     <input type="hidden" name="id" value="<?php echo $card['id']; ?>">
@@ -275,8 +279,9 @@ while ($row = $result->fetch_assoc()) {
             data-content="<?php echo htmlspecialchars($card['content'], ENT_QUOTES); ?>">
             Edit Content
         </button>
-    </div>
-</form>
+        </div>
+    </form>
+</div>
 
                         <?php endforeach; ?>
 <?php include 'service_edit_modal.php';?>
