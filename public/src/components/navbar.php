@@ -70,13 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             Swal.fire({
               html: `
-                  <h2 class="swal-modern-title">Are you sure?</h2>
-                  <p class="swal-modern-text">You will be logged out of your account.</p>
+                  <h2 class="swal-custom-title">Are you sure?</h2>
+                  <p class="swal-custom-text">You will be logged out of your account.</p>
               `,
               icon: null,
               showCancelButton: true,
-              confirmButtonText: 'LOGOUT',
-              cancelButtonText: 'CANCEL',
+              confirmButtonText: 'Logout',
+              cancelButtonText: 'Cancel',
               background: '#ffffff',
               color: '#000066',
               buttonsStyling: false,
@@ -85,8 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
               imageAlt: 'Top Image',
               customClass: {
                   popup: 'swal-custom-popup',
-                  title: 'swal-modern-title',
-                  content: 'swal-modern-text',
                   confirmButton: 'swal-button-btn ok-btn',
                   cancelButton: 'swal-button-btn cancel-btn'
               },
@@ -94,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   const img = Swal.getImage();
                   img.style.marginTop = '-110px'; 
                   const separator = document.createElement('div');
-                  separator.style.height = '2px';
+                  separator.style.height = '4px';
                   separator.style.width = '100%';
                   separator.style.backgroundColor = '#000066';
                   separator.style.borderRadius = '5px';
@@ -105,8 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (result.isConfirmed) {
         Swal.fire({
            html: `
-                  <h2 class="swal-modern-title">Logged Out!</h2>
-                  <p class="swal-modern-text">You have successfully logged out.</p>
+                  <h2 class="swal-custom-title">Logged Out!</h2>
+                  <p class="swal-custom-text">You have successfully logged out.</p>
               `,
             icon: null,
             showConfirmButton: false,
@@ -118,14 +116,12 @@ document.addEventListener("DOMContentLoaded", function () {
             imageAlt: 'Top Image',
             customClass: {
                 popup: 'swal-custom-popup',
-                title: 'swal-modern-title',
-                content: 'swal-modern-text',
             },
              didOpen: () => {
                   const img = Swal.getImage();
                   img.style.marginTop = '-110px'; 
                   const separator = document.createElement('div');
-                  separator.style.height = '2px';
+                  separator.style.height = '4px';
                   separator.style.width = '100%';
                   separator.style.backgroundColor = '#000066';
                   separator.style.borderRadius = '5px';

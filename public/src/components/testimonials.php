@@ -266,7 +266,7 @@ while ($row = $result->fetch_assoc()) {
                             <input type="number" max="5" class="form-control mb-2 border-dark" name="stars" placeholder="5">
                             <br>
                             
-                            <button class="btn contact_button px-5 py-2 rounded text-dark w-100 w-md-auto mt-3 border-dark" type="submit">Add Testimonial</button>
+                            <button class="btn contact_button px-5 py-2 rounded text-dark w-100 w-md-auto mt-3 border-dark add-button" type="submit">Add Testimonial</button>
                         </form>
                     </div>
                 
@@ -302,7 +302,7 @@ while ($row = $result->fetch_assoc()) {
 
           <form action="backend/delete_testimonial.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $test['id']; ?>">
-            <button type="button" class="contact_button px-4 py-2 rounded text-dark w-100 delete-testimonial-btn" style="border-color: black;">
+            <button type="button" class="contact_button px-4 py-2 rounded text-dark w-100 delete-button" style="border-color: black;">
               Delete
             </button>
           </form>

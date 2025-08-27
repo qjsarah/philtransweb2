@@ -249,7 +249,7 @@ while ($row = $result->fetch_assoc()) {
                         <label for="Card Description" class="form-label fw-bold text-secondary ">Card Description:</label>
                         <textarea name="content" class="form-control mb-2 border-dark" rows="3" placeholder="Card Description" required></textarea>
 
-                        <button class="contact_button w-25 px-3 py-2 mt-3 rounded text-dark border border-dark d-block mx-auto" type="submit">Add Card</button>
+                        <button class="contact_button w-25 px-3 py-2 mt-3 rounded text-dark border border-dark d-block mx-auto add-button" type="submit">Add Card</button>
                     </form>
                 </div>
 
@@ -267,7 +267,7 @@ while ($row = $result->fetch_assoc()) {
     <input type="hidden" name="id" value="<?php echo $card['id']; ?>">
     <div class="d-flex justify-content-center gap-2">
         <!-- Delete Button -->
-        <button type="submit" class="contact_button w-25 px-3 py-2 mt-2 rounded text-dark border border-dark">
+        <button type="submit" class="contact_button w-25 px-3 py-2 mt-2 rounded text-dark border border-dark delete-button">
             Delete
         </button>
 

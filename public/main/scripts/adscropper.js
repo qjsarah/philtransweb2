@@ -40,32 +40,110 @@ const imageBase64 = sessionStorage.getItem('tempImage');
     });
   };
 
-  function cropAndUpload() {
-    const { width, height } = cropSize;
-    const canvas = cropper.getCroppedCanvas({ width, height });
+function cropAndUpload() {
+  const { width, height } = cropSize;
+  const canvas = cropper.getCroppedCanvas({ width, height });
 
-    canvas.toBlob(blob => {
-      const formData = new FormData();
-      formData.append("cms_key", cmsKey);
-      formData.append("cms_image", blob, "cropped.png");
+  Swal.fire({
+    html: `
+      <h2 class="swal-custom-title">Are you sure?</h2>
+      <p class="swal-custom-text">Do you want to save your changes?</p>
+    `,
+    icon: null,
+    showCancelButton: true,
+    confirmButtonText: 'Save',
+    cancelButtonText: 'Cancel',
+    background: '#ffffff',
+    color: '#000066',
+    buttonsStyling: false,
+    imageUrl: '../../../public/main/images/adscropper_section/adscropperimage.png',
+    imageHeight: 200,
+    imageAlt: 'Top Image',
+    customClass: {
+      popup: 'swal-custom-popup',
+      confirmButton: 'swal-button-btn ok-btn',
+      cancelButton: 'swal-button-btn cancel-btn'
+    },
+    didOpen: () => {
+      const img = Swal.getImage();
+      img.style.marginTop = '-110px';
+      const separator = document.createElement('div');
+      separator.style.height = '4px';
+      separator.style.width = '100%';
+      separator.style.backgroundColor = '#000066';
+      separator.style.borderRadius = '5px';
+      const popup = Swal.getPopup();
+      popup.insertBefore(separator, popup.querySelector('.swal2-title'));
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      canvas.toBlob(blob => {
+        const formData = new FormData();
+        formData.append("cms_key", cmsKey);
+        formData.append("cms_image", blob, "cropped.png");
 
-      fetch("../backend/savecms.php", {
-        method: "POST",
-        body: formData
-      })
-      .then(res => {
-        if (res.ok) {
-          alert("Upload success!");
-          sessionStorage.removeItem("tempImage");
-          sessionStorage.removeItem("cmsKey");
-          window.history.back();
-        } else {
-          alert("Upload failed.");
-        }
-      })
-      .catch(err => {
-        console.error("Upload error", err);
-        alert("Something went wrong.");
-      });
-    }, "image/png");
-  }
+        fetch("../backend/savecms.php", {
+          method: "POST",
+          body: formData
+        })
+        .then(res => {
+          if (res.ok) {
+            Swal.fire({
+              html: `
+                <h2 class="swal-custom-title">Saved Successfully!</h2>
+                <p class="swal-custom-text">Your changes have been saved successfully.</p>
+              `,
+              icon: null,
+              showConfirmButton: false,
+              timer: 1500,
+              background: '#ffffff',
+              color: '#000066',
+              imageUrl: '../../../public/main/images/adscropper_section/adscropperimage.png',
+              imageHeight: 200,
+              imageAlt: 'Top Image',
+              customClass: {
+                popup: 'swal-custom-popup'
+              },
+              didOpen: () => {
+                const img = Swal.getImage();
+                img.style.marginTop = '-110px';
+                const separator = document.createElement('div');
+                separator.style.height = '4px';
+                separator.style.width = '100%';
+                separator.style.backgroundColor = '#000066';
+                separator.style.borderRadius = '5px';
+                const popup = Swal.getPopup();
+                popup.insertBefore(separator, popup.querySelector('.swal2-title'));
+              }
+            }).then(() => {
+              sessionStorage.removeItem("tempImage");
+              sessionStorage.removeItem("cmsKey");
+              window.history.back(); 
+            });
+          } else {
+            alert("Upload failed.");
+          }
+        })
+        .catch(err => {
+          console.error("Upload error", err);
+          alert("Something went wrong.");
+        });
+      }, "image/png");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cancelBtn = document.getElementById("cancelBtn");
+  const cropUploadBtn = document.getElementById("cropUploadBtn");
+
+
+  cancelBtn.addEventListener("click", () => {
+    window.history.back();
+  });
+
+  
+  cropUploadBtn.addEventListener("click", () => {
+    cropAndUpload();
+  });
+});

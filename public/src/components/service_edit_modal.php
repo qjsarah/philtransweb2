@@ -24,7 +24,7 @@
         </div>
         
         <div class="modal-footer">
-         <button type="submit" class="contact_button w-100 px-3 py-2 mt-2 rounded text-dark" style="border-color: black;">Update Card</button>
+         <button type="submit" class="contact_button w-100 px-3 py-2 mt-2 rounded text-dark update-button" style="border-color: black;">Update Card</button>
           <button type="button" class="contact_button w-100 px-3 py-2 mt-2 rounded text-dark" style="border-color: black;" data-bs-dismiss="modal">Cancel</button>
         </div>
       </form>
