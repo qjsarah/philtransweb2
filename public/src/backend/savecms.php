@@ -65,10 +65,6 @@ foreach ($fields as $field) {
             $redirectSection = '#testimonial';
         }
 
-
-
-
-
         if (in_array($field, ['contact_title', 'email', 'number', 'location', 'phone4_img', 'location_img', 'contact_img', 'web_img', 'contact_bg_color', 'contact_title_color', 'contact_font_color'])) {
             $stmt = $conn->prepare("UPDATE contact SET content = ? WHERE key_name = ?");
             $stmt->bind_param("ss", $content, $field);
@@ -118,11 +114,29 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['apple_dl', 'google
             $dbPath = $relativePath . $filename;
 
             if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+                // Get the current image before updating
+                $stmt = $conn->prepare("SELECT content FROM download WHERE key_name = ?");
+                $stmt->bind_param("s", $cmsKey);
+                $stmt->execute();
+                $stmt->bind_result($oldImage);
+                $stmt->fetch();
+                $stmt->close();
+
+                if ($oldImage) {
+                    // Archive old image
+                    $stmt = $conn->prepare("INSERT INTO download_archive (key_name, file_name) VALUES (?, ?)");
+                    $stmt->bind_param("ss", $cmsKey, $oldImage);
+                    $stmt->execute();
+                    $stmt->close();
+                }
+
+                // Update to new image
                 $stmt = $conn->prepare("UPDATE download SET content = ? WHERE key_name = ?");
                 $stmt->bind_param("ss", $dbPath, $cmsKey);
                 $stmt->execute();
                 $stmt->close();
             }
+
         }
     }
 }
