@@ -6,7 +6,7 @@ if (isset($_POST['id'], $_POST['key_name'])) {
     $key = $_POST['key_name'];
 
     // Fetch archive record
-    $stmt = $conn->prepare("SELECT file_name FROM download_archive WHERE id=? AND key_name=?");
+    $stmt = $conn->prepare("SELECT file_name FROM testimonial_archive WHERE id=? AND key_name=?");
     $stmt->bind_param("is", $id, $key);
     $stmt->execute();
     $stmt->bind_result($restoreFile);
@@ -16,14 +16,14 @@ if (isset($_POST['id'], $_POST['key_name'])) {
     if ($restoreFile) {
         // Define folders
         $rootPath   = dirname(__DIR__, 4);
-        $archiveDir = $rootPath . "/public/main/images/download_section/archive/";
-        $uploadDir  = $rootPath . "/public/main/images/download_section/";
+        $archiveDir = $rootPath . "/public/main/images/testimonial_section/archive/";
+        $uploadDir  = $rootPath . "/public/main/images/testimonial_section/";
 
         $archivePath = $archiveDir . $restoreFile;
         $restorePath = $uploadDir . $restoreFile;
 
         // ✅ STEP 1: Get the current active image
-        $stmt = $conn->prepare("SELECT content FROM download WHERE key_name=?");
+        $stmt = $conn->prepare("SELECT content FROM testimonial WHERE key_name=?");
         $stmt->bind_param("s", $key);
         $stmt->execute();
         $stmt->bind_result($currentImage);
@@ -42,7 +42,7 @@ if (isset($_POST['id'], $_POST['key_name'])) {
                     $archivedPath = $archiveDir . $archivedName;
 
                     if (rename($uploadDir . $currentFile, $archivedPath)) {
-                        $stmt = $conn->prepare("INSERT INTO download_archive (key_name, file_name) VALUES (?, ?)");
+                        $stmt = $conn->prepare("INSERT INTO testimonial_archive (key_name, file_name) VALUES (?, ?)");
                         $stmt->bind_param("ss", $key, $archivedName);
                         $stmt->execute();
                         $stmt->close();
@@ -51,13 +51,13 @@ if (isset($_POST['id'], $_POST['key_name'])) {
 
                 // ✅ STEP 3: Update main table (store only file name)
                 $dbPath = $restoreFile;
-                $stmt = $conn->prepare("UPDATE download SET content=? WHERE key_name=?");
+                $stmt = $conn->prepare("UPDATE testimonial SET content=? WHERE key_name=?");
                 $stmt->bind_param("ss", $dbPath, $key);
                 $stmt->execute();
                 $stmt->close();
 
                 // ✅ STEP 4: Remove restored file from archive table + folder
-                $stmt = $conn->prepare("DELETE FROM download_archive WHERE id=?");
+                $stmt = $conn->prepare("DELETE FROM testimonial_archive WHERE id=?");
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
                 $stmt->close();
@@ -68,5 +68,5 @@ if (isset($_POST['id'], $_POST['key_name'])) {
     }
 }
 
-header("Location: ../../components/admin_dashboard/download_archive.php");
+header("Location: ../../components/admin_dashboard/testimonial_archive.php");
 exit;

@@ -113,29 +113,43 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['apple_dl', 'google
             $targetPath = $uploadDir . $filename;
             $dbPath = $relativePath . $filename;
 
-            if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
-                // Get the current image before updating
-                $stmt = $conn->prepare("SELECT content FROM download WHERE key_name = ?");
-                $stmt->bind_param("s", $cmsKey);
-                $stmt->execute();
-                $stmt->bind_result($oldImage);
-                $stmt->fetch();
-                $stmt->close();
+          if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+    // Get the current image before updating
+    $stmt = $conn->prepare("SELECT content FROM download WHERE key_name = ?");
+    $stmt->bind_param("s", $cmsKey);
+    $stmt->execute();
+    $stmt->bind_result($oldImage);
+    $stmt->fetch();
+    $stmt->close();
 
-                if ($oldImage) {
-                    // Archive old image
-                    $stmt = $conn->prepare("INSERT INTO download_archive (key_name, file_name) VALUES (?, ?)");
-                    $stmt->bind_param("ss", $cmsKey, $oldImage);
-                    $stmt->execute();
-                    $stmt->close();
-                }
+    if ($oldImage) {
+        // Archive old image into folder
+        $archiveDir = '../../main/images/download_section/archive/';
+        if (!is_dir($archiveDir)) {
+            mkdir($archiveDir, 0777, true);
+        }
 
-                // Update to new image
-                $stmt = $conn->prepare("UPDATE download SET content = ? WHERE key_name = ?");
-                $stmt->bind_param("ss", $dbPath, $cmsKey);
+        $oldPath = '../../main/images/download_section/' . basename($oldImage);
+        $archivedName = time() . "_archived_" . basename($oldImage);
+        $archivedPath = $archiveDir . $archivedName;
+
+        if (file_exists($oldPath)) {
+            if (rename($oldPath, $archivedPath)) {
+                // Insert into archive DB
+                $stmt = $conn->prepare("INSERT INTO download_archive (key_name, file_name) VALUES (?, ?)");
+                $stmt->bind_param("ss", $cmsKey, $archivedName);
                 $stmt->execute();
                 $stmt->close();
             }
+        }
+    }
+
+    // Update to new image
+    $stmt = $conn->prepare("UPDATE download SET content = ? WHERE key_name = ?");
+    $stmt->bind_param("ss", $dbPath, $cmsKey);
+    $stmt->execute();
+    $stmt->close();
+}
 
         }
     }
@@ -146,10 +160,9 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['phone2_img'])) {
     $cmsKey = $_POST['cms_key'];
 
     if (isset($_FILES['cms_image']) && $_FILES['cms_image']['error'] === UPLOAD_ERR_OK) {
-       $allowedKeys = [
-        'phone2_img' => ['dir' => '../../main/images/intro_section/', 'path' => '']
+        $allowedKeys = [
+            'phone2_img' => ['dir' => '../../main/images/intro_section/', 'path' => '']
         ];
-        
 
         if (!array_key_exists($cmsKey, $allowedKeys)) {
             http_response_code(400);
@@ -171,6 +184,36 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['phone2_img'])) {
             $dbPath = $relativePath . $filename;
 
             if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+                // ✅ Step 1: Fetch current image before update
+                $stmt = $conn->prepare("SELECT content FROM intro WHERE key_name=?");
+                $stmt->bind_param("s", $cmsKey);
+                $stmt->execute();
+                $stmt->bind_result($oldFile);
+                $stmt->fetch();
+                $stmt->close();
+
+                if ($oldFile) {
+                    $archiveDir = $uploadDir . "archive/";
+                    if (!is_dir($archiveDir)) {
+                        mkdir($archiveDir, 0777, true);
+                    }
+
+                    $oldPath = $uploadDir . basename($oldFile);
+                    $archivedName = time() . "_archived_" . basename($oldFile);
+                    $archivedPath = $archiveDir . $archivedName;
+
+                    if (file_exists($oldPath)) {
+                        if (rename($oldPath, $archivedPath)) {
+                            // ✅ Step 2: Insert into archive DB
+                            $stmt = $conn->prepare("INSERT INTO intro_archive (key_name, file_name) VALUES (?, ?)");
+                            $stmt->bind_param("ss", $cmsKey, $archivedName);
+                            $stmt->execute();
+                            $stmt->close();
+                        }
+                    }
+                }
+
+                // ✅ Step 3: Update intro table with new file
                 $stmt = $conn->prepare("UPDATE intro SET content = ? WHERE key_name = ?");
                 $stmt->bind_param("ss", $dbPath, $cmsKey);
                 $stmt->execute();
@@ -185,10 +228,9 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['tricycle_img'])) {
     $cmsKey = $_POST['cms_key'];
 
     if (isset($_FILES['cms_image']) && $_FILES['cms_image']['error'] === UPLOAD_ERR_OK) {
-       $allowedKeys = [
-        'tricycle_img' => ['dir' => '../../main/images/about_section/', 'path' => '']
+        $allowedKeys = [
+            'tricycle_img' => ['dir' => '../../main/images/about_section/', 'path' => '']
         ];
-        
 
         if (!array_key_exists($cmsKey, $allowedKeys)) {
             http_response_code(400);
@@ -210,6 +252,37 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['tricycle_img'])) {
             $dbPath = $relativePath . $filename;
 
             if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+
+                // ✅ Step 1: Fetch current image
+                $stmt = $conn->prepare("SELECT content FROM aboutus WHERE key_name=?");
+                $stmt->bind_param("s", $cmsKey);
+                $stmt->execute();
+                $stmt->bind_result($oldFile);
+                $stmt->fetch();
+                $stmt->close();
+
+                if ($oldFile) {
+                    $archiveDir = $uploadDir . "archive/";
+                    if (!is_dir($archiveDir)) {
+                        mkdir($archiveDir, 0777, true);
+                    }
+
+                    $oldPath = $uploadDir . basename($oldFile);
+                    $archivedName = time() . "_archived_" . basename($oldFile);
+                    $archivedPath = $archiveDir . $archivedName;
+
+                    if (file_exists($oldPath)) {
+                        if (rename($oldPath, $archivedPath)) {
+                            // ✅ Step 2: Insert into archive DB
+                            $stmt = $conn->prepare("INSERT INTO aboutus_archive (key_name, file_name) VALUES (?, ?)");
+                            $stmt->bind_param("ss", $cmsKey, $archivedName);
+                            $stmt->execute();
+                            $stmt->close();
+                        }
+                    }
+                }
+
+                // ✅ Step 3: Update with new image
                 $stmt = $conn->prepare("UPDATE aboutus SET content = ? WHERE key_name = ?");
                 $stmt->bind_param("ss", $dbPath, $cmsKey);
                 $stmt->execute();
@@ -218,6 +291,7 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['tricycle_img'])) {
         }
     }
 }
+
 
 // Mission and Vision Section
 if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['mission_img', 'vision_img', 'phone3_img'])) {
@@ -260,14 +334,14 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['mission_img', 'vis
     }
 }
 
-// Services Section
+// About Us Section
 if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['service_image'])) {
     $cmsKey = $_POST['cms_key'];
 
     if (isset($_FILES['cms_image']) && $_FILES['cms_image']['error'] === UPLOAD_ERR_OK) {
-       $allowedKeys = [
-        'service_image' => ['dir' => '../../main/images/services_section/', 'path' => '']];
-        
+        $allowedKeys = [
+            'service_image' => ['dir' => '../../main/images/services_section/', 'path' => '']
+        ];
 
         if (!array_key_exists($cmsKey, $allowedKeys)) {
             http_response_code(400);
@@ -289,6 +363,37 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['service_image'])) 
             $dbPath = $relativePath . $filename;
 
             if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+
+                // ✅ Step 1: Fetch current image
+                $stmt = $conn->prepare("SELECT content FROM services WHERE key_name=?");
+                $stmt->bind_param("s", $cmsKey);
+                $stmt->execute();
+                $stmt->bind_result($oldFile);
+                $stmt->fetch();
+                $stmt->close();
+
+                if ($oldFile) {
+                    $archiveDir = $uploadDir . "archive/";
+                    if (!is_dir($archiveDir)) {
+                        mkdir($archiveDir, 0777, true);
+                    }
+
+                    $oldPath = $uploadDir . basename($oldFile);
+                    $archivedName = time() . "_archived_" . basename($oldFile);
+                    $archivedPath = $archiveDir . $archivedName;
+
+                    if (file_exists($oldPath)) {
+                        if (rename($oldPath, $archivedPath)) {
+                            // ✅ Step 2: Insert into archive DB
+                            $stmt = $conn->prepare("INSERT INTO services_archive (key_name, file_name) VALUES (?, ?)");
+                            $stmt->bind_param("ss", $cmsKey, $archivedName);
+                            $stmt->execute();
+                            $stmt->close();
+                        }
+                    }
+                }
+
+                // ✅ Step 3: Update with new image
                 $stmt = $conn->prepare("UPDATE services SET content = ? WHERE key_name = ?");
                 $stmt->bind_param("ss", $dbPath, $cmsKey);
                 $stmt->execute();
@@ -298,14 +403,15 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['service_image'])) 
     }
 }
 
-// Testimonials Section
+
+// Testimonial Section
 if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['test_img'])) {
     $cmsKey = $_POST['cms_key'];
 
     if (isset($_FILES['cms_image']) && $_FILES['cms_image']['error'] === UPLOAD_ERR_OK) {
-       $allowedKeys = [
-        'test_img' => ['dir' => '../../main/images/testimonial_section/', 'path' => '']];
-        
+        $allowedKeys = [
+            'test_img' => ['dir' => '../../main/images/testimonial_section/', 'path' => '']
+        ];
 
         if (!array_key_exists($cmsKey, $allowedKeys)) {
             http_response_code(400);
@@ -327,6 +433,37 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['test_img'])) {
             $dbPath = $relativePath . $filename;
 
             if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+
+                // ✅ Step 1: Fetch current image
+                $stmt = $conn->prepare("SELECT content FROM testimonial WHERE key_name=?");
+                $stmt->bind_param("s", $cmsKey);
+                $stmt->execute();
+                $stmt->bind_result($oldFile);
+                $stmt->fetch();
+                $stmt->close();
+
+                if ($oldFile) {
+                    $archiveDir = $uploadDir . "archive/";
+                    if (!is_dir($archiveDir)) {
+                        mkdir($archiveDir, 0777, true);
+                    }
+
+                    $oldPath = $uploadDir . basename($oldFile);
+                    $archivedName = time() . "_archived_" . basename($oldFile);
+                    $archivedPath = $archiveDir . $archivedName;
+
+                    if (file_exists($oldPath)) {
+                        if (rename($oldPath, $archivedPath)) {
+                            // ✅ Step 2: Insert into archive DB
+                            $stmt = $conn->prepare("INSERT INTO testimonial_archive (key_name, file_name) VALUES (?, ?)");
+                            $stmt->bind_param("ss", $cmsKey, $archivedName);
+                            $stmt->execute();
+                            $stmt->close();
+                        }
+                    }
+                }
+
+                // ✅ Step 3: Update with new image
                 $stmt = $conn->prepare("UPDATE testimonial SET content = ? WHERE key_name = ?");
                 $stmt->bind_param("ss", $dbPath, $cmsKey);
                 $stmt->execute();
