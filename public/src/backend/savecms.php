@@ -325,11 +325,42 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['mission_img', 'vis
             $dbPath = $relativePath . $filename;
 
             if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+
+                // ✅ Step 1: Fetch current image
+                $stmt = $conn->prepare("SELECT content FROM missionvision WHERE key_name=?");
+                $stmt->bind_param("s", $cmsKey);
+                $stmt->execute();
+                $stmt->bind_result($oldFile);
+                $stmt->fetch();
+                $stmt->close();
+
+                if ($oldFile) {
+                    $archiveDir = $uploadDir . "archive/";
+                    if (!is_dir($archiveDir)) {
+                        mkdir($archiveDir, 0777, true);
+                    }
+
+                    $oldPath = $uploadDir . basename($oldFile);
+                    $archivedName = time() . "_archived_" . basename($oldFile);
+                    $archivedPath = $archiveDir . $archivedName;
+
+                    if (file_exists($oldPath)) {
+                        if (rename($oldPath, $archivedPath)) {
+                            // ✅ Step 2: Insert into archive DB
+                            $stmt = $conn->prepare("INSERT INTO missionvision_archive (key_name, file_name) VALUES (?, ?)");
+                            $stmt->bind_param("ss", $cmsKey, $archivedName);
+                            $stmt->execute();
+                            $stmt->close();
+                        }
+                    }
+                }
+
+                // ✅ Step 3: Update with new image
                 $stmt = $conn->prepare("UPDATE missionvision SET content = ? WHERE key_name = ?");
                 $stmt->bind_param("ss", $dbPath, $cmsKey);
                 $stmt->execute();
                 $stmt->close();
-            }
+        }
         }
     }
 }
@@ -550,13 +581,44 @@ if (isset($_POST['cms_key']) && in_array($_POST['cms_key'], ['phone4_img', 'loca
             $dbPath = $relativePath . $filename;
 
             if (move_uploaded_file($_FILES['cms_image']['tmp_name'], $targetPath)) {
+
+                // ✅ Step 1: Fetch current image
+                $stmt = $conn->prepare("SELECT content FROM contact WHERE key_name=?");
+                $stmt->bind_param("s", $cmsKey);
+                $stmt->execute();
+                $stmt->bind_result($oldFile);
+                $stmt->fetch();
+                $stmt->close();
+
+                if ($oldFile) {
+                    $archiveDir = $uploadDir . "archive/";
+                    if (!is_dir($archiveDir)) {
+                        mkdir($archiveDir, 0777, true);
+                    }
+
+                    $oldPath = $uploadDir . basename($oldFile);
+                    $archivedName = time() . "_archived_" . basename($oldFile);
+                    $archivedPath = $archiveDir . $archivedName;
+
+                    if (file_exists($oldPath)) {
+                        if (rename($oldPath, $archivedPath)) {
+                            // ✅ Step 2: Insert into archive DB
+                            $stmt = $conn->prepare("INSERT INTO contact_archive (key_name, file_name) VALUES (?, ?)");
+                            $stmt->bind_param("ss", $cmsKey, $archivedName);
+                            $stmt->execute();
+                            $stmt->close();
+                        }
+                    }
+                }
+
+                // ✅ Step 3: Update with new image
                 $stmt = $conn->prepare("UPDATE contact SET content = ? WHERE key_name = ?");
                 $stmt->bind_param("ss", $dbPath, $cmsKey);
                 $stmt->execute();
                 $stmt->close();
-            }
         }
     }
+}
 }
 
 // Redirection
