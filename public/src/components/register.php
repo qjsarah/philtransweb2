@@ -193,7 +193,7 @@ if (isset($_SESSION["user_id"])) {
                           const popup = Swal.getPopup();
                           popup.insertBefore(separator, popup.querySelector('.swal2-title'));
                       }
-                  }).then(() => { window.location.href = 'successsign.php'; });
+                  }).then(() => { window.location.href = 'success.php'; });
               } else {
                   Swal.fire({ 
                     html: `<h2 class="swal-custom-title">Error!</h2>
