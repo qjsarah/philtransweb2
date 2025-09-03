@@ -22,7 +22,7 @@ document.querySelectorAll('.restore-button').forEach(button => {
       background: '#ffffff',
       color: '#000066',
       buttonsStyling: false,
-      imageUrl: '/philtransweb2/philtransweb2/public/main/images/archive_section/archivetrycicle.png',
+      imageUrl: '/philtrans/philtransweb2/public/main/images/archive_section/archivetrycicle.png',
       imageHeight: 200,
       customClass: {
         popup: 'swal-custom-popup',
@@ -52,7 +52,7 @@ document.querySelectorAll('.restore-button').forEach(button => {
           timer: 1500,
           background: '#ffffff',
           color: '#000066',
-          imageUrl: '/philtransweb2/philtransweb2/public/main/images/archive_section/archivetrycicle.png',
+          imageUrl: '/philtrans/philtransweb2/public/main/images/archive_section/archivetrycicle.png',
           imageHeight: 200,
           customClass: {
             popup: 'swal-custom-popup',
