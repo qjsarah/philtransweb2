@@ -116,9 +116,9 @@ document.querySelectorAll('.cms-image-input').forEach(input => { //CROPPERRRR
   document.body.appendChild(document.getElementById('editTestimonial'));
   </script>
   <script src="../main/scripts/script.js"></script>
-      <script>
- document.querySelectorAll(
-  '.save-button, .delete-button, .update-button, .add-button'
+   <script>
+document.querySelectorAll(
+  '.save-button, .delete-button, .update-button, .add-button, .restore-button'
 ).forEach(button => {
   button.addEventListener('click', function (e) {
     e.preventDefault();
@@ -130,7 +130,8 @@ document.querySelectorAll('.cms-image-input').forEach(input => { //CROPPERRRR
     else if (this.classList.contains('delete-button')) action = 'delete';
     else if (this.classList.contains('update-button')) action = 'update';
     else if (this.classList.contains('add-button')) action = 'add';
-  
+    else if (this.classList.contains('restore-button')) action = 'restore';
+
     // Define texts based on action
     let title = 'Are you sure?';
     let text = '';
@@ -153,15 +154,17 @@ document.querySelectorAll('.cms-image-input').forEach(input => { //CROPPERRRR
       confirmText = 'Update';
       confirmedText = 'Updated';
       successMsg = 'Item has been updated!';
-    }
-    else if (action === 'add') {
+    } else if (action === 'add') {
       text = 'This item will be added!';
       confirmText = 'Add';
       confirmedText = 'Added';
       successMsg = 'Item has been added!';
-    } 
-    
-    
+    } else if (action === 'restore') {
+      text = 'This file will be restored back to active section!';
+      confirmText = 'Restore';
+      confirmedText = 'Restored';
+      successMsg = 'File has been restored successfully.';
+    }
 
     // Confirmation Swal
     Swal.fire({
@@ -229,6 +232,8 @@ document.querySelectorAll('.cms-image-input').forEach(input => { //CROPPERRRR
     });
   });
 });
+
+
     const uploadBoxes = document.querySelectorAll(".uploadBox");
     const fileInputs = document.querySelectorAll(".fileInput");
 

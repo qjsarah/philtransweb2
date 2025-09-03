@@ -20,17 +20,22 @@ $result = $stmt->get_result();
     <?php while ($row = $result->fetch_assoc()): ?>
     <tr>
         <td>
-            <img src="/philtrans/philtransweb2/public/main/images/testimonial_section/archive/<?php echo htmlspecialchars($row['file_name']); ?>" width="100">
+            <img src="/philtrans/philtransweb2/philtransweb2/public/main/images/testimonial_section/archive/<?php echo htmlspecialchars($row['file_name']); ?>" width="100">
         </td>
         <td><?php echo htmlspecialchars($row['file_name']); ?></td>
         <td><?php echo $row['created_at']; ?></td>
         <td>
-             <form method="POST" action="../../backend/admin_dashboard/restore_testimonial.php">
-                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                <input type="hidden" name="key_name" value="<?php echo $row['key_name']; ?>">
-                <button type="submit">Restore</button>
-            </form>
+           <form method="POST" action="../../backend/admin_dashboard/restore_testimonial.php">
+              <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+              <input type="hidden" name="key_name" value="<?php echo $row['key_name']; ?>">
+              <button type="submit" class="restore-button">Restore</button>
+           </form>
         </td>
     </tr>
     <?php endwhile; ?>
 </table>
+
+
+<link rel="stylesheet" href="/philtrans/philtransweb2/public/main/style/main.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/philtrans/philtransweb2/public/main/scripts/swal_archive.js"></script>
