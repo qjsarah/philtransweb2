@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="../../../main/style/main.css">
 <?php
+session_start(); 
+if (isset($_SESSION['user_id'])): 
 include __DIR__ . '/../../backend/config.php';
 
 $keys = ['mission_img', 'vision_img', 'phone3_img'];
@@ -14,14 +16,14 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 ?>
-<div class="container">
-    <h1 class="mb-3">Archived Images for Misson and Vision Section</h1>
+<div class="container text-primary">
+    <h1 class="my-3">Archived Images for Misson and Vision Section</h1>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <?php if ($result->num_rows > 0): ?>
         <?php while ($row = $result->fetch_assoc()): ?>
             <div class="col">
-                <div class="card h-auto p-3">
+                <div class="card h-auto p-3 shadow">
                     <img src="/philtransweb2/public/main/images/mission_and_vission_section/archive/<?php echo htmlspecialchars($row['file_name']); ?>" 
                         class="card-img-top" 
                         alt="Archived Image">
@@ -32,11 +34,11 @@ $result = $stmt->get_result();
                         </p>
                     </div>
 
-                    <div class="card-footer text-center">
+                    <div class="text-center">
                         <form method="POST" action="../../backend/admin_dashboard/restore_mvision.php" class="d-inline">
                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                             <input type="hidden" name="key_name" value="<?php echo $row['key_name']; ?>">
-                            <button type="button" class="btn btn-outline-primary border-none restore-button">↺</button>
+                            <button type="button" class="btn btn-primary border-none restore-button form-control py-2">↺</button>
                         </form>
                     </div>
                 </div>
@@ -49,6 +51,12 @@ $result = $stmt->get_result();
         <?php endif; ?>
     </div>
 </div>
+<?php 
+else: 
+    header("Location: ../../index.php");
+    exit;
+endif; 
+?>
 <script src="../../../main/scripts/bootstrap.bundle.min.js"></script>
 <script src="/philtransweb2/public/main/scripts/swal_archive.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
