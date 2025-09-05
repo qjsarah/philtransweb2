@@ -36,7 +36,7 @@ while ($row = $result->fetch_assoc()) {
   </h1>
 
   <!-- Paragraph -->
-  <p class="mx-auto py-3 fs-6 fs-md-5 w-100 w-md-75 w-lg-50 download-desc"
+  <p class="mx-auto py-3 fs-6 fs-md-5 w-100 w-md-75 w-lg-50 download-desc fs-4"
      data-aos="fade-down" 
      data-aos-duration="1500" 
      style="color: <?php echo htmlspecialchars($content['download_desc_color'] ?? '#FFFFFF'); ?>;">

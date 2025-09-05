@@ -28,7 +28,7 @@ $descColor  = htmlspecialchars($content['aboutus_desc_color'] ?? '#1a1a1a');
 
     <!-- Left Text -->
     <div class="col-12 col-lg-4">
-        <p class="mt-3 mt-lg-5 about-desc" style="color: <?= $descColor ?>;" data-aos="fade-right" data-aos-duration="1500">
+        <p class="mt-3 mt-lg-5 about-desc fs-5" style="color: <?= $descColor ?>;" data-aos="fade-right" data-aos-duration="1500">
             <?php echo htmlspecialchars($content['paragraph3']  ?? 'In the ever-evolving landscape of transportation, PTAS emerges as more than just another app. It shatters the mold of traditional ride-hailing services, offering a revolutionary approach centered around the very people who keep the tricycle industry moving – the drivers.'); ?>
         </p>
     </div>
@@ -39,7 +39,7 @@ $descColor  = htmlspecialchars($content['aboutus_desc_color'] ?? '#1a1a1a');
     </div>
 
     <!-- Right Text -->
-    <div class="col-12 col-lg-4 text-lg-end text-center">
+    <div class="col-12 col-lg-4 text-lg-end text-center fs-5">
         <h4 class="fs-2 about-subtitle" data-aos="fade-right" style="color: <?= $subColor ?>;" data-aos-duration="2000">
             <?php echo htmlspecialchars($content['header3_1']  ?? 'ABOUT US'); ?>
         </h4>

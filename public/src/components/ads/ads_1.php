@@ -8,16 +8,16 @@ while ($row = $result->fetch_assoc()) {
     $content[$row['key_name']] = $row['content'];
 }
 ?>
-<section class="mt-5">
+<section class="mt-5 pt-5">
   <!-- Display current image -->
   <div class="d-flex flex-column flex-xl-row justify-content-center align-items-center gap-3">
 <div>
 
-  <img src="../main/images/ads_section/<?php echo htmlspecialchars($content['ads1'] ?? 'ads_no_1.png'); ?>" alt="Ad Image" class="img-fluid mb-2 current-cms-img" data-cms-key="ads1" style="max-width: 100%; height: auto;">
+  <img src="../main/images/ads_section/<?php echo htmlspecialchars($content['ads1'] ?? 'ads_no_1.png'); ?>" alt="Ad Image" class="img-fluid mb-2 current-cms-img" data-cms-key="ads1" style="max-width: 100%; height: auto;" data-aos="fade-up" data-aos-duration="1000">
 </div>
   <div>
 
-    <img src="../main/images/ads_section/<?php echo htmlspecialchars($content['ads2'] ?? 'ads_no_2.png'); ?>" alt="Ad Image" class="img-fluid mb-2 current-cms-img" data-cms-key="ads2" style="max-width: 100%; height: auto;">
+    <img src="../main/images/ads_section/<?php echo htmlspecialchars($content['ads2'] ?? 'ads_no_2.png'); ?>" alt="Ad Image" class="img-fluid mb-2 current-cms-img" data-cms-key="ads2" style="max-width: 100%; height: auto;" data-aos="fade-up" data-aos-duration="1000">
   </div>  
   </div>
     <?php if (isset($_SESSION['user_id'])): ?>
