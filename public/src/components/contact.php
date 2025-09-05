@@ -37,20 +37,20 @@ while ($row = $result->fetch_assoc()) {
       <div class="col-lg-6">
         <h5 class="display-5 fw-bold" data-aos="fade-right" style="color: <?php echo htmlspecialchars($content['contact_title_color'] ?? '#FFFFFF'); ?>;" data-aos-duration="500"><?php echo htmlspecialchars($content['contact_title'] ?? "Get in Touch."); ?></h5>
 
-        <form class="mt-4">
+        <form class="mt-4" method="POST" action="backend/save_message.php">
           <!-- Name Field -->
           <div class="mb-3" data-aos="fade-right" data-aos-duration="1000">
-            <input type="text" class="form-control" id="inputName" placeholder="Enter your name">
+            <input type="text" class="form-control" id="inputName" name="name" placeholder="Enter your name" required>
           </div>
 
           <!-- Email Field -->
           <div class="mb-3" data-aos="fade-right" data-aos-duration="1000">
-            <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email">
+            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter your email" required>
           </div>
 
           <!-- Message Field -->
           <div class="mb-4" data-aos="fade-right" data-aos-duration="1000">
-            <textarea class="form-control" id="inputMessage" rows="7" placeholder="Type your message here..."></textarea>
+            <textarea class="form-control" id="inputMessage" name="message" rows="7" placeholder="Type your message here..." required></textarea>
           </div>
 
           <!-- Submit Button -->
@@ -60,6 +60,7 @@ while ($row = $result->fetch_assoc()) {
             </button>
           </div>
         </form>
+
       </div>
 
       <!-- Image Column -->

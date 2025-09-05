@@ -22,7 +22,11 @@ if (isset($_SESSION['user_id'])): ?>
     <a href="admin_dashboard/testimonial_archive.php">Testimonial</a>
 
     <h1>Contact Section</h1>
-    <a href="admin_dashboard/contact_archive.php">Testimonial</a>
+    <a href="admin_dashboard/contact_archive.php">Contact</a>
+
+    <h1>Messages Section</h1>
+    <a href="admin_dashboard/messages.php"> Messages Section</a>
+
 <?php 
 else: 
     header("Location: ../index.php");
