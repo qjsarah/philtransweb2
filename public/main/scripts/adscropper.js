@@ -21,24 +21,25 @@ const imageBase64 = sessionStorage.getItem('tempImage');
     contact_img: { width: 61, height: 45 },
     web_img: { width: 75, height: 80 }
   };
+
   if (!imageBase64 || !cmsKey || !cropSizes[cmsKey]) {
-    alert("Missing image or CMS key.");
-    window.location.href = "../index.php";
-  }
+  alert("Missing image or CMS key.");
+  window.location.href = "../index.php";
+}
 
-  const cropSize = cropSizes[cmsKey];
-  const cropperTarget = document.getElementById('cropperTarget');
-  let cropper;
+const cropSize = cropSizes[cmsKey];
+const cropperTarget = document.getElementById('cropperTarget');
+let cropper;
 
-  cropperTarget.src = imageBase64;
+cropperTarget.src = imageBase64;
 
-  cropperTarget.onload = () => {
-    cropper = new Cropper(cropperTarget, {
-      aspectRatio: cropSize.width / cropSize.height,
-      viewMode: 1,
-      autoCropArea: 1
-    });
-  };
+cropperTarget.onload = () => {
+  cropper = new Cropper(cropperTarget, {
+    aspectRatio: cropSize.width / cropSize.height,
+    viewMode: 1,
+    autoCropArea: 1
+  });
+};
 
 function cropAndUpload() {
   const { width, height } = cropSize;
@@ -47,11 +48,11 @@ function cropAndUpload() {
   Swal.fire({
     html: `
       <h2 class="swal-custom-title">Are you sure?</h2>
-      <p class="swal-custom-text">Do you want to save your changes?</p>
+      <p class="swal-custom-text">Do you want to upload your changes?</p>
     `,
     icon: null,
     showCancelButton: true,
-    confirmButtonText: 'Save',
+    confirmButtonText: 'Upload',  
     cancelButtonText: 'Cancel',
     background: '#ffffff',
     color: '#000066',
@@ -90,11 +91,12 @@ function cropAndUpload() {
           if (res.ok) {
             Swal.fire({
               html: `
-                <h2 class="swal-custom-title">Saved Successfully!</h2>
-                <p class="swal-custom-text">Your changes have been saved successfully.</p>
+                <h2 class="swal-custom-title">Uploaded Successfully!</h2>
+                <p class="swal-custom-text">Your changes have been uploaded successfully.</p>
               `,
               icon: null,
               showConfirmButton: false,
+              confirmButtonText: 'Upload',  
               timer: 1500,
               background: '#ffffff',
               color: '#000066',
@@ -137,12 +139,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const cancelBtn = document.getElementById("cancelBtn");
   const cropUploadBtn = document.getElementById("cropUploadBtn");
 
-
   cancelBtn.addEventListener("click", () => {
     window.history.back();
   });
 
-  
   cropUploadBtn.addEventListener("click", () => {
     cropAndUpload();
   });
