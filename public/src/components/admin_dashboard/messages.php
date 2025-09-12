@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="../../../main/style/main.css">
 <?php
+session_start(); 
 include __DIR__ . '/../../backend/config.php';
 
 // Handle delete request
@@ -24,6 +25,7 @@ if (!$stmt) {
 }
 $stmt->execute();
 $result = $stmt->get_result();
+include 'admin_navbar.php'; 
 ?>
     <div class="container">
         <h1 class="my-3 text-primary">Messages Management</h1>
@@ -31,7 +33,7 @@ $result = $stmt->get_result();
         <table class="table table-hover rounded-5">
             <thead class="table-primary">   
                 <tr>
-                    <th width="50" class="text-light py-3">ID</th>
+                    <th width="50" class="py-3">ID</th>
                     <th width="150" class="py-3 text-primary">Name</th>
                     <th width="200" class="py-3 text-primary">Email</th>
                     <th class="py-3 text-primary">Message</th>
@@ -65,6 +67,3 @@ $result = $stmt->get_result();
     </div>
     
 
-<script src="../../../main/scripts/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../../../main/scripts/swal.js"></script>

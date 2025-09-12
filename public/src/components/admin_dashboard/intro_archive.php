@@ -10,6 +10,7 @@ $stmt = $conn->prepare("SELECT * FROM intro_archive WHERE key_name = ? ORDER BY 
 $stmt->bind_param("s", $key);
 $stmt->execute();
 $result = $stmt->get_result();
+include 'admin_navbar.php'; 
 ?>
 <div class="container text-primary">
     <h1 class="my-3">Archived Images for Introduction Section</h1>
@@ -54,7 +55,3 @@ else:
     exit;
 endif; 
 ?>
-
-<script src="../../../main/scripts/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../../../main/scripts/swal.js"></script>
