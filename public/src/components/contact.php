@@ -55,7 +55,7 @@ while ($row = $result->fetch_assoc()) {
 
           <!-- Submit Button -->
           <div class="text-end">
-            <button type="submit" class="contact_button px-3 py-2 rounded text-white">
+            <button type="submit" class="send-button contact_button px-3 py-2 rounded text-white">
               Send Message
             </button>
           </div>
