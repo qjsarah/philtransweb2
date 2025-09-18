@@ -19,17 +19,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sss", $name, $email, $message);
 
     if ($stmt->execute()) {
-    header("Location: ../index.php#contacts?status=sent");
+    header("Location: ../index.php");
     exit;
 } else {
-    header("Location: ../index.php#contacts?status=error");
+    header("Location: ../index.php");
     exit;
 }
 
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../index.php#contact");
+    header("Location: ../index.php");
     exit();
 }
 ?>
