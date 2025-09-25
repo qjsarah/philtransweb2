@@ -55,18 +55,18 @@ if (!isset($_SESSION['user_id'])) {
       align-items: center;
       justify-content: flex-start;
       width: calc(100% - 40px);
-      margin: 0 20px;
-      padding: 13px 10px;
-      font-size: 1.3rem;
+      margin: 0 25px;
+      padding: 8px 10px;
+      font-size: 1.2rem;
       color: #000066;
-      border-radius: 15px;
+      border-radius: 10px;
       background: transparent;
       transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     #sidebar .nav-link i {
-      margin-right: 12px;
-      font-size: 1.3rem;
+      margin-right: 15px;
+      font-size: 1.2rem;
       color: #000066;
       transition: color 0.3s;
     }
