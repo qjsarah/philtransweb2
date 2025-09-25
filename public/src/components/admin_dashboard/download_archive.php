@@ -5,7 +5,7 @@ if (isset($_SESSION['user_id'])):
 include __DIR__ . '/../../backend/config.php';
 
 
-$key = 'phone_img'; // you can make this dynamic if needed
+$key = 'phone_img';
 
 $stmt = $conn->prepare("SELECT * FROM download_archive WHERE key_name = ? ORDER BY created_at DESC");
 $stmt->bind_param("s", $key);
